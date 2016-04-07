@@ -74,6 +74,73 @@
 			<key>name</key>
 			<string>constant.language.setlx</string>
 		</dict>
+		<key>atomic-functionSymbol</key>
+		<dict>
+			<key>comment</key>
+			<string>combination of all threee ways to defina a functionSymbol for a term</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#atomic-functionSymbol-capital</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#atomic-functionSymbol-escaped</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#atomic-functionSymbol-internal</string>
+				</dict>
+			</array>
+		</dict>
+		<key>atomic-functionSymbol-capital</key>
+		<dict>
+			<key>comment</key>
+			<string>atomic value, functionSymbol for a term, written with an initial capital letter</string>
+			<key>match</key>
+			<string>([A-Z])([a-zA-Z0-9]|_)*</string>
+			<key>name</key>
+			<string>entity.functionSymbol.setlx</string>
+		</dict>
+		<key>atomic-functionSymbol-escaped</key>
+		<dict>
+			<key>comment</key>
+			<string>atomic value, functionSymbol for a term, written with an initial @ as escape-character</string>
+			<key>match</key>
+			<string>((@)([a-z]))([a-zA-Z0-9]|_)*</string>
+			<key>name</key>
+			<string>entity.functionSymbol.setlx</string>
+		</dict>
+		<key>atomic-functionSymbol-internal</key>
+		<dict>
+			<key>comment</key>
+			<string>atomic value, functionSymbol for a term, used internally for definitions</string>
+			<key>match</key>
+			<string>(\^)([a-zA-Z0-9]|_)*</string>
+			<key>name</key>
+			<string>entity.functionSymbol.setlx</string>
+		</dict>
+		<key>atomic-languageConstant</key>
+		<dict>
+			<key>comment</key>
+			<string>combination of the three atomic, basic, language-defined constants</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#atomic-om</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#atomic-true</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#atomic-false</string>
+				</dict>
+			</array>
+		</dict>
 		<key>atomic-literal</key>
 		<dict>
 			<key>comment</key>
@@ -119,15 +186,6 @@
 			<key>name</key>
 			<string>string.quoted.setlx</string>
 		</dict>
-		<key>atomic-term</key>
-		<dict>
-			<key>comment</key>
-			<string>atomic value, term</string>
-			<key>match</key>
-			<string>(((\^)([a-z]))|[A-Z])([a-zA-Z0-9]|_)*</string>
-			<key>name</key>
-			<string>entity.term.setlx</string>
-		</dict>
 		<key>atomic-true</key>
 		<dict>
 			<key>comment</key>
@@ -147,19 +205,11 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#atomic-om</string>
+					<string>#atomic-languageConstant</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#atomic-true</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#atomic-false</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#atomic-term</string>
+					<string>#atomic-functionSymbol</string>
 				</dict>
 				<dict>
 					<key>include</key>

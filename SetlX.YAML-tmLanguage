@@ -14,16 +14,20 @@ repository:
     comment: combination of all atomic values
     name: constant.language.setlx.atomic
     patterns:
-    - include: '#atomic-om'
-    - include: '#atomic-true'
-    - include: '#atomic-false'
-    - include: '#atomic-term'
+    - include: '#atomic-languageConstant'
+    - include: '#atomic-functionSymbol'
     - include: '#atomic-number'
     - include: '#atomic-double'
     - include: '#atomic-range-sign'
     - include: '#atomic-string'
     - include: '#atomic-literal'
     - include: '#atomic-comment'
+  atomic-languageConstant:
+    comment: combination of the three atomic, basic, language-defined constants
+    patterns:
+    - include: '#atomic-om'
+    - include: '#atomic-true'
+    - include: '#atomic-false'
   atomic-om:
     comment: atomic value, om   # undefined
     name: constant.language.setlx
@@ -36,10 +40,25 @@ repository:
     comment: atomic value, false
     name: constant.language.setlx
     match: (false)
-  atomic-term:
-    comment: atomic value, term
-    name: entity.term.setlx
-    match: (((\^)([a-z]))|[A-Z])([a-zA-Z0-9]|_)*
+  atomic-functionSymbol:
+    comment: combination of all threee ways to defina a functionSymbol for a term
+    patterns:
+    - include: '#atomic-functionSymbol-capital'
+    - include: '#atomic-functionSymbol-escaped'
+    - include: '#atomic-functionSymbol-internal'
+  atomic-functionSymbol-capital:
+    comment: atomic value, functionSymbol for a term, written with an initial capital letter
+    name: entity.functionSymbol.setlx
+    match: ([A-Z])([a-zA-Z0-9]|_)*
+  atomic-functionSymbol-escaped:
+    comment: atomic value, functionSymbol for a term, written with an initial @ as escape-character
+    # used internally for definitions
+    name: entity.functionSymbol.setlx
+    match: ((@)([a-z]))([a-zA-Z0-9]|_)*
+  atomic-functionSymbol-internal:
+    comment: atomic value, functionSymbol for a term, used internally for definitions
+    name: entity.functionSymbol.setlx
+    match: (\^)([a-zA-Z0-9]|_)*
   atomic-number:
     comment: atomic value, number
     name: constant.numeric.int.setlx
