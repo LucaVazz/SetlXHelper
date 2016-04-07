@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>stlx</string>
+		<string>setlx</string>
+	</array>
+	<key>name</key>
+	<string>SetlX</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>include</key>
+			<string>#atomics</string>
+		</dict>
+	</array>
+	<key>repository</key>
+	<dict>
+		<key>atomic-comment</key>
+		<dict>
+			<key>comment</key>
+			<string>combination of the atomic single-line- and multi-line-comments</string>
+			<key>name</key>
+			<string>comment.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#atomic-comment-line</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#atomic-comment-block</string>
+				</dict>
+			</array>
+		</dict>
+		<key>atomic-comment-block</key>
+		<dict>
+			<key>begin</key>
+			<string>/\*</string>
+			<key>comment</key>
+			<string>atomic value, uninterpreted, multiple-line-comment</string>
+			<key>end</key>
+			<string>\*/</string>
+			<key>name</key>
+			<string>comment.block.setlx</string>
+		</dict>
+		<key>atomic-comment-line</key>
+		<dict>
+			<key>comment</key>
+			<string>atomic value, uninterpreted, one-line-comment</string>
+			<key>match</key>
+			<string>(//)(.)*</string>
+			<key>name</key>
+			<string>comment.line.setlx</string>
+		</dict>
+		<key>atomic-double</key>
+		<dict>
+			<key>comment</key>
+			<string>atomic value, double</string>
+			<key>match</key>
+			<string>((0)*(\d)+)?(\.)(\d)+((e|E)(\+|\-)?(\d)+)?</string>
+			<key>name</key>
+			<string>constant.numeric.double.setlx</string>
+		</dict>
+		<key>atomic-false</key>
+		<dict>
+			<key>comment</key>
+			<string>atomic value, false</string>
+			<key>match</key>
+			<string>(false)</string>
+			<key>name</key>
+			<string>constant.language.setlx</string>
+		</dict>
+		<key>atomic-literal</key>
+		<dict>
+			<key>comment</key>
+			<string>atomic value, literal</string>
+			<key>match</key>
+			<string>(\')(\'\'|(?!\').)*(\')</string>
+			<key>name</key>
+			<string>string.regexp.setlx</string>
+		</dict>
+		<key>atomic-number</key>
+		<dict>
+			<key>comment</key>
+			<string>atomic value, number</string>
+			<key>match</key>
+			<string>(0)*(\d)+</string>
+			<key>name</key>
+			<string>constant.numeric.int.setlx</string>
+		</dict>
+		<key>atomic-om</key>
+		<dict>
+			<key>comment</key>
+			<string>atomic value, om</string>
+			<key>match</key>
+			<string>(om)</string>
+			<key>name</key>
+			<string>constant.language.setlx</string>
+		</dict>
+		<key>atomic-range-sign</key>
+		<dict>
+			<key>comment</key>
+			<string>atomic value, range sign</string>
+			<key>match</key>
+			<string>(\.\.)</string>
+			<key>name</key>
+			<string>keyword.operator.setlx</string>
+		</dict>
+		<key>atomic-string</key>
+		<dict>
+			<key>comment</key>
+			<string>atomic value, string</string>
+			<key>match</key>
+			<string>(\")((?!\")(\\.)*.)*(\")</string>
+			<key>name</key>
+			<string>string.quoted.setlx</string>
+		</dict>
+		<key>atomic-term</key>
+		<dict>
+			<key>comment</key>
+			<string>atomic value, term</string>
+			<key>match</key>
+			<string>(((\^)([a-z]))|[A-Z])([a-zA-Z0-9]|_)*</string>
+			<key>name</key>
+			<string>entity.term.setlx</string>
+		</dict>
+		<key>atomic-true</key>
+		<dict>
+			<key>comment</key>
+			<string>atomic value, true</string>
+			<key>match</key>
+			<string>(true)</string>
+			<key>name</key>
+			<string>constant.language.setlx</string>
+		</dict>
+		<key>atomics</key>
+		<dict>
+			<key>comment</key>
+			<string>combination of all atomic values</string>
+			<key>name</key>
+			<string>constant.language.setlx.atomic</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#atomic-om</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#atomic-true</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#atomic-false</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#atomic-term</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#atomic-number</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#atomic-double</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#atomic-range-sign</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#atomic-string</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#atomic-literal</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#atomic-comment</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+	<key>scopeName</key>
+	<string>source.setlx</string>
+	<key>uuid</key>
+	<string>8be6972f-85b1-4d39-b3b5-68bbfdb44d84</string>
+</dict>
+</plist>

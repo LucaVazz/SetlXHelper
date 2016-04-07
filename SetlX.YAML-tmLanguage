@@ -1,0 +1,82 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: SetlX
+scopeName: source.setlx
+fileTypes: [stlx, setlx]
+uuid: 8be6972f-85b1-4d39-b3b5-68bbfdb44d84
+
+
+patterns:
+- include: '#atomics'
+
+repository:
+  atomics:
+    comment: combination of all atomic values
+    name: constant.language.setlx.atomic
+    patterns:
+    - include: '#atomic-om'
+    - include: '#atomic-true'
+    - include: '#atomic-false'
+    - include: '#atomic-term'
+    - include: '#atomic-number'
+    - include: '#atomic-double'
+    - include: '#atomic-range-sign'
+    - include: '#atomic-string'
+    - include: '#atomic-literal'
+    - include: '#atomic-comment'
+  atomic-om:
+    comment: atomic value, om   # undefined
+    name: constant.language.setlx
+    match: (om)
+  atomic-true:
+    comment: atomic value, true
+    name: constant.language.setlx
+    match: (true)
+  atomic-false:
+    comment: atomic value, false
+    name: constant.language.setlx
+    match: (false)
+  atomic-term:
+    comment: atomic value, term
+    name: entity.term.setlx
+    match: (((\^)([a-z]))|[A-Z])([a-zA-Z0-9]|_)*
+  atomic-number:
+    comment: atomic value, number
+    name: constant.numeric.int.setlx
+    match: (0)*(\d)+
+  atomic-double:
+    comment: atomic value, double
+    name: constant.numeric.double.setlx
+    match: ((0)*(\d)+)?(\.)(\d)+((e|E)(\+|\-)?(\d)+)?
+  atomic-range-sign:
+    comment: atomic value, range sign   # ..
+    name: keyword.operator.setlx
+    match: (\.\.)
+  atomic-string:
+    comment: atomic value, string
+    name: string.quoted.setlx
+    match: (\")((?!\")(\\.)*.)*(\")
+  atomic-literal:
+    comment: atomic value, literal  # a string whose escape characters, etc. 
+                                    #   aren't interpteted
+    name: string.regexp.setlx # well not really, but I want to color it ever so 
+                              #   slightly differntly than a string...
+    match: (\')(\'\'|(?!\').)*(\')
+  atomic-comment:
+    comment: combination of the atomic single-line- and multi-line-comments
+    name: comment.setlx
+    patterns:
+    - include: '#atomic-comment-line'
+    - include: '#atomic-comment-block'
+  atomic-comment-line:
+    comment: atomic value, uninterpreted, one-line-comment
+    name: comment.line.setlx
+    match: (//)(.)*   # sublime always only matches the current line, so no check
+                      #   for a line-end / newline-char is needed
+  atomic-comment-block:
+    comment: atomic value, uninterpreted, multiple-line-comment
+    name: comment.block.setlx
+    # we want to extned the comment over multiple lines, so we must use `begin` and #   `end` instead of match
+    begin: /\*
+    end: \*/
+...
