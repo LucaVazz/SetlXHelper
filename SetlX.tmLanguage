@@ -12,6 +12,96 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>begin</key>
+			<string>&lt;&lt;</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>entity.enclosing.matrix.setlx</string>
+				</dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.enclosing.matrix.setlx</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>setlMatrix</string>
+			<key>end</key>
+			<string>\&gt;\&gt;</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>entity.enclosing.matrix.setlx</string>
+				</dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.enclosing.matrix.setlx</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.matrix.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>meta.matrix.setlx</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>&lt;&lt;</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>entity.enclosing.vector.setlx</string>
+				</dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.enclosing.vector.setlx</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>setlVector</string>
+			<key>end</key>
+			<string>\&gt;\&gt;</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>entity.enclosing.vector.setlx</string>
+				</dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.enclosing.vector.setlx</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.vector.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#atomic-number</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
 			<key>include</key>
 			<string>#atomics</string>
 		</dict>
@@ -61,7 +151,7 @@
 			<key>comment</key>
 			<string>atomic value, double</string>
 			<key>match</key>
-			<string>((0)*(\d)+)?(\.)(\d)+((e|E)(\+|\-)?(\d)+)?</string>
+			<string>(\-|\+)?((0)*(\d)+)?(\.)(\d)+((e|E)(\+|\-)?(\d)+)?</string>
 			<key>name</key>
 			<string>constant.numeric.double.setlx</string>
 		</dict>
@@ -77,7 +167,7 @@
 		<key>atomic-functionSymbol</key>
 		<dict>
 			<key>comment</key>
-			<string>combination of all threee ways to defina a functionSymbol for a term</string>
+			<string>combination of all three ways to defina a functionSymbol for a term</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -121,6 +211,15 @@
 			<key>name</key>
 			<string>entity.functionSymbol.setlx</string>
 		</dict>
+		<key>atomic-int</key>
+		<dict>
+			<key>comment</key>
+			<string>atomic value, number</string>
+			<key>match</key>
+			<string>(\-|\+)?(0)*(\d)+</string>
+			<key>name</key>
+			<string>constant.numeric.int.setlx</string>
+		</dict>
 		<key>atomic-languageConstant</key>
 		<dict>
 			<key>comment</key>
@@ -148,16 +247,49 @@
 			<key>match</key>
 			<string>(\')(\'\'|(?!\').)*(\')</string>
 			<key>name</key>
-			<string>string.regexp.setlx</string>
+			<string>string.quoted.setlx</string>
 		</dict>
 		<key>atomic-number</key>
 		<dict>
 			<key>comment</key>
-			<string>atomic value, number</string>
-			<key>match</key>
-			<string>(0)*(\d)+</string>
+			<string>combination of all ways to define a nuber</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#atomic-number-fraction</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#atomic-double</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#atomic-int</string>
+				</dict>
+			</array>
+		</dict>
+		<key>atomic-number-fraction</key>
+		<dict>
 			<key>name</key>
-			<string>constant.numeric.int.setlx</string>
+			<string>constant.numeric.fraction.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#atomic-int</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#atomic-double</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(/)(?!\*|/)</string>
+					<key>name</key>
+					<string>keyword.operator.setlx</string>
+				</dict>
+			</array>
 		</dict>
 		<key>atomic-om</key>
 		<dict>

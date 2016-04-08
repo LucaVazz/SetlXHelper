@@ -7,7 +7,34 @@ uuid: 8be6972f-85b1-4d39-b3b5-68bbfdb44d84
 
 
 patterns:
+- comment: setlMatrix
+  name: meta.matrix.setlx
+  begin: '<<'
+  beginCaptures:
+    '0':  {name: entity.enclosing.matrix.setlx}
+    '1':  {name: entity.enclosing.matrix.setlx}
+  patterns:
+  - include: '$self'
+  - include: 'meta.matrix.setlx'
+  end: \>\>
+  endCaptures:
+    '0':  {name: entity.enclosing.matrix.setlx}
+    '1':  {name: entity.enclosing.matrix.setlx}
+- comment: setlVector
+  name: meta.vector.setlx
+  begin: '<<'
+  beginCaptures:
+    '0':  {name: entity.enclosing.vector.setlx}
+    '1':  {name: entity.enclosing.vector.setlx}
+  patterns:
+  - include: '#atomic-number'
+  end: \>\>
+  endCaptures:
+    '0':  {name: entity.enclosing.vector.setlx}
+    '1':  {name: entity.enclosing.vector.setlx}
+
 - include: '#atomics'
+
 
 repository:
   atomics:
@@ -41,7 +68,7 @@ repository:
     name: constant.language.setlx
     match: (false)
   atomic-functionSymbol:
-    comment: combination of all threee ways to defina a functionSymbol for a term
+    comment: combination of all three ways to defina a functionSymbol for a term
     patterns:
     - include: '#atomic-functionSymbol-capital'
     - include: '#atomic-functionSymbol-escaped'
@@ -60,13 +87,26 @@ repository:
     name: entity.functionSymbol.setlx
     match: (\^)([a-zA-Z0-9]|_)*
   atomic-number:
-    comment: atomic value, number
-    name: constant.numeric.int.setlx
-    match: (0)*(\d)+
+    comment: combination of all ways to define a nuber
+    patterns:
+    - include: '#atomic-number-fraction'
+    - include: '#atomic-double'
+    - include: '#atomic-int'
+  atomic-number-fraction:
+    name: constant.numeric.fraction.setlx
+    patterns:
+    - include: '#atomic-int'
+    - include: '#atomic-double'
+    - name: keyword.operator.setlx
+      match: (/)(?!\*|/)
   atomic-double:
     comment: atomic value, double
     name: constant.numeric.double.setlx
-    match: ((0)*(\d)+)?(\.)(\d)+((e|E)(\+|\-)?(\d)+)?
+    match: (\-|\+)?((0)*(\d)+)?(\.)(\d)+((e|E)(\+|\-)?(\d)+)?
+  atomic-int:
+    comment: atomic value, number
+    name: constant.numeric.int.setlx
+    match: (\-|\+)?(0)*(\d)+
   atomic-range-sign:
     comment: atomic value, range sign   # ..
     name: keyword.operator.setlx
@@ -78,8 +118,7 @@ repository:
   atomic-literal:
     comment: atomic value, literal  # a string whose escape characters, etc. 
                                     #   aren't interpteted
-    name: string.regexp.setlx # well not really, but I want to color it ever so 
-                              #   slightly differntly than a string...
+    name: string.quoted.setlx
     match: (\')(\'\'|(?!\').)*(\')
   atomic-comment:
     comment: combination of the atomic single-line- and multi-line-comments
