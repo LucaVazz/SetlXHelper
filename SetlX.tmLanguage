@@ -103,6 +103,10 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#keywords</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#atomics</string>
 		</dict>
 	</array>
@@ -300,15 +304,6 @@
 			<key>name</key>
 			<string>constant.language.setlx</string>
 		</dict>
-		<key>atomic-range-sign</key>
-		<dict>
-			<key>comment</key>
-			<string>atomic value, range sign</string>
-			<key>match</key>
-			<string>(\.\.)</string>
-			<key>name</key>
-			<string>keyword.operator.setlx</string>
-		</dict>
 		<key>atomic-string</key>
 		<dict>
 			<key>comment</key>
@@ -332,7 +327,7 @@
 			<key>comment</key>
 			<string>combination of all atomic values</string>
 			<key>name</key>
-			<string>constant.language.setlx.atomic</string>
+			<string>meta.atomic.setlx</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -366,6 +361,32 @@
 				<dict>
 					<key>include</key>
 					<string>#atomic-comment</string>
+				</dict>
+			</array>
+		</dict>
+		<key>keywords</key>
+		<dict>
+			<key>comment</key>
+			<string>combination of all keyowrds available</string>
+			<key>name</key>
+			<string>meta.keyword.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>comment</key>
+					<string>iterator marker</string>
+					<key>match</key>
+					<string>( in )</string>
+					<key>name</key>
+					<string>keyword.operator.setlx</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>range sign</string>
+					<key>match</key>
+					<string>(\.\.)</string>
+					<key>name</key>
+					<string>keyword.operator.setlx</string>
 				</dict>
 			</array>
 		</dict>

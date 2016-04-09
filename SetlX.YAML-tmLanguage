@@ -33,13 +33,26 @@ patterns:
     '0':  {name: entity.enclosing.vector.setlx}
     '1':  {name: entity.enclosing.vector.setlx}
 
+- include: '#keywords'
 - include: '#atomics'
 
 
 repository:
+  keywords:
+    comment: combination of all keyowrds available
+    name: meta.keyword.setlx
+    patterns:
+    - comment: iterator marker        # a in x
+      name: keyword.operator.setlx
+      match: ( in )
+    - comment: range sign             # ..
+      name: keyword.operator.setlx
+      match: (\.\.)
+
+
   atomics:
     comment: combination of all atomic values
-    name: constant.language.setlx.atomic
+    name: meta.atomic.setlx
     patterns:
     - include: '#atomic-languageConstant'
     - include: '#atomic-functionSymbol'
@@ -107,10 +120,6 @@ repository:
     comment: atomic value, number
     name: constant.numeric.int.setlx
     match: (\-|\+)?(0)*(\d)+
-  atomic-range-sign:
-    comment: atomic value, range sign   # ..
-    name: keyword.operator.setlx
-    match: (\.\.)
   atomic-string:
     comment: atomic value, string
     name: string.quoted.setlx
