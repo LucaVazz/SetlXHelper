@@ -348,9 +348,95 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#list-access</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#list</string>
 				</dict>
 			</array>
+		</dict>
+		<key>comparison-operators</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(\=\=)</string>
+					<key>name</key>
+					<string>keyword.operator.comparison.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(\!\=)</string>
+					<key>name</key>
+					<string>keyword.operator.comparison.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(&lt;)</string>
+					<key>name</key>
+					<string>keyword.operator.comparison.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(&lt;\=)</string>
+					<key>name</key>
+					<string>keyword.operator.comparison.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(\&gt;)</string>
+					<key>name</key>
+					<string>keyword.operator.comparison.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(\&gt;\=)</string>
+					<key>name</key>
+					<string>keyword.operator.comparison.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(in)</string>
+					<key>name</key>
+					<string>keyword.operator.comparison.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(notin)</string>
+					<key>name</key>
+					<string>keyword.operator.comparison.setlx</string>
+				</dict>
+			</array>
+		</dict>
+		<key>conjunction</key>
+		<dict>
+			<key>match</key>
+			<string>(\&amp;\&amp;)</string>
+			<key>name</key>
+			<string>keyword.operator.conjunction.setlx</string>
+		</dict>
+		<key>disjunction</key>
+		<dict>
+			<key>match</key>
+			<string>(\|\|)</string>
+			<key>name</key>
+			<string>keyword.operator.disjunction.setlx</string>
+		</dict>
+		<key>exists</key>
+		<dict>
+			<key>match</key>
+			<string>(exists)</string>
+			<key>name</key>
+			<string>keyword.operator.setlx</string>
+		</dict>
+		<key>forall</key>
+		<dict>
+			<key>match</key>
+			<string>(forall)</string>
+			<key>name</key>
+			<string>keyword.operator.setlx</string>
 		</dict>
 		<key>fucntions</key>
 		<dict>
@@ -422,6 +508,13 @@
 				</dict>
 			</array>
 		</dict>
+		<key>implication</key>
+		<dict>
+			<key>match</key>
+			<string>(\=\&gt;)</string>
+			<key>name</key>
+			<string>keyword.operator.implication.setlx</string>
+		</dict>
 		<key>iterator-chain</key>
 		<dict>
 			<key>name</key>
@@ -453,6 +546,42 @@
 			<string>combination of all "keyowrds" available</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#implication</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#disjunction</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#conjunction</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#comparison-operators</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#product-operators</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#prefix-operators</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#exists</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#forall</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#negator</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#range-sign</string>
@@ -503,6 +632,77 @@
 				</dict>
 			</array>
 		</dict>
+		<key>list-access</key>
+		<dict>
+			<key>begin</key>
+			<string>((\w|\])+\s*)(\[)</string>
+			<key>end</key>
+			<string>\]</string>
+			<key>name</key>
+			<string>meta.list.access.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+			</array>
+		</dict>
+		<key>negator</key>
+		<dict>
+			<key>match</key>
+			<string>(\!)</string>
+			<key>name</key>
+			<string>keyword.operator.setlx</string>
+		</dict>
+		<key>prefix-operators</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(\*\*)</string>
+					<key>name</key>
+					<string>keyword.operator.prefix.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(\+/)</string>
+					<key>name</key>
+					<string>keyword.operator.prefix.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(\*/)</string>
+					<key>name</key>
+					<string>keyword.operator.prefix.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(\#)</string>
+					<key>name</key>
+					<string>keyword.operator.prefix.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(\-)</string>
+					<key>name</key>
+					<string>keyword.operator.prefix.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(\+)</string>
+					<key>name</key>
+					<string>keyword.operator.prefix.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(\@)</string>
+					<key>name</key>
+					<string>keyword.operator.prefix.setlx</string>
+				</dict>
+			</array>
+		</dict>
 		<key>procedure</key>
 		<dict>
 			<key>begin</key>
@@ -524,6 +724,42 @@
 				<dict>
 					<key>include</key>
 					<string>$self</string>
+				</dict>
+			</array>
+		</dict>
+		<key>product-operators</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(\*)</string>
+					<key>name</key>
+					<string>keyword.operator.product.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(/)</string>
+					<key>name</key>
+					<string>keyword.operator.product.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(\\)</string>
+					<key>name</key>
+					<string>keyword.operator.product.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(%)</string>
+					<key>name</key>
+					<string>keyword.operator.product.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(&gt;&lt;)</string>
+					<key>name</key>
+					<string>keyword.operator.product.setlx</string>
 				</dict>
 			</array>
 		</dict>

@@ -62,6 +62,7 @@ repository:
   collections:
     patterns:
     - include: '#set'
+    - include: '#list-access'
     - include: '#list'
   set:
     begin: \{
@@ -72,6 +73,12 @@ repository:
     end: \}
     endCaptures:
       '0': {name: entity.enclosing.set.setlx}
+  list-access:
+    name: meta.list.access.setlx
+    begin: ((\w|\])+\s*)(\[)
+    patterns:
+    - include: '$self'
+    end: \]
   list:
     begin: \[
     beginCaptures:
@@ -129,7 +136,80 @@ repository:
   keywords:
     comment: combination of all "keyowrds" available
     patterns:
-    - include: '#range-sign'    
+    - include: '#implication'
+    - include: '#disjunction'
+    - include: '#conjunction'
+    - include: '#comparison-operators'
+    - include: '#product-operators'
+    - include: '#prefix-operators'
+    - include: '#exists'
+    - include: '#forall'
+    - include: '#negator'
+    - include: '#range-sign'
+  implication:
+    name: keyword.operator.implication.setlx
+    match: (\=\>)
+  disjunction:
+    name: keyword.operator.disjunction.setlx
+    match: (\|\|)
+  conjunction:
+    name: keyword.operator.conjunction.setlx
+    match: (\&\&)
+  comparison-operators:
+    patterns:
+    - name: keyword.operator.comparison.setlx
+      match: (\=\=)
+    - name: keyword.operator.comparison.setlx
+      match: (\!\=)
+    - name: keyword.operator.comparison.setlx
+      match: (<)
+    - name: keyword.operator.comparison.setlx
+      match: (<\=)
+    - name: keyword.operator.comparison.setlx
+      match: (\>)
+    - name: keyword.operator.comparison.setlx
+      match: (\>\=)
+    - name: keyword.operator.comparison.setlx
+      match: (in)
+    - name: keyword.operator.comparison.setlx
+      match: (notin)
+  product-operators:
+    patterns:
+    - name: keyword.operator.product.setlx
+      match: (\*)
+    - name: keyword.operator.product.setlx
+      match: (/)
+    - name: keyword.operator.product.setlx
+      match: (\\)
+    - name: keyword.operator.product.setlx
+      match: (%)
+    - name: keyword.operator.product.setlx
+      match: (><)
+  prefix-operators:
+    patterns:
+    - name: keyword.operator.prefix.setlx
+      match: (\*\*)
+    - name: keyword.operator.prefix.setlx
+      match: (\+/)
+    - name: keyword.operator.prefix.setlx
+      match: (\*/)
+    - name: keyword.operator.prefix.setlx
+      match: (\#)
+    - name: keyword.operator.prefix.setlx
+      match: (\-)
+    - name: keyword.operator.prefix.setlx
+      match: (\+)
+    - name: keyword.operator.prefix.setlx
+      match: (\@)
+  exists:
+    name: keyword.operator.setlx
+    match: (exists)
+  forall:
+    name: keyword.operator.setlx
+    match: (forall)
+  negator:
+    name: keyword.operator.setlx
+    match: (\!)
   iterator-chain:
     name: meta.iteratorchain.setlx
     patterns:
