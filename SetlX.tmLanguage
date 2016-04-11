@@ -12,102 +12,16 @@
 	<key>patterns</key>
 	<array>
 		<dict>
-			<key>begin</key>
-			<string>&lt;&lt;</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>entity.enclosing.matrix.setlx</string>
-				</dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>entity.enclosing.matrix.setlx</string>
-				</dict>
-			</dict>
-			<key>comment</key>
-			<string>setlMatrix</string>
-			<key>end</key>
-			<string>\&gt;\&gt;</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>entity.enclosing.matrix.setlx</string>
-				</dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>entity.enclosing.matrix.setlx</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>meta.matrix.setlx</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>$self</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>meta.matrix.setlx</string>
-				</dict>
-			</array>
+			<key>include</key>
+			<string>#fucntions</string>
 		</dict>
 		<dict>
-			<key>begin</key>
-			<string>&lt;&lt;</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>entity.enclosing.vector.setlx</string>
-				</dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>entity.enclosing.vector.setlx</string>
-				</dict>
-			</dict>
-			<key>comment</key>
-			<string>setlVector</string>
-			<key>end</key>
-			<string>\&gt;\&gt;</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>entity.enclosing.vector.setlx</string>
-				</dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>entity.enclosing.vector.setlx</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>meta.vector.setlx</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#atomic-number</string>
-				</dict>
-			</array>
+			<key>include</key>
+			<string>#values</string>
 		</dict>
 		<dict>
 			<key>include</key>
 			<string>#keywords</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#atomics</string>
 		</dict>
 	</array>
 	<key>repository</key>
@@ -155,7 +69,7 @@
 			<key>comment</key>
 			<string>atomic value, double</string>
 			<key>match</key>
-			<string>(\-|\+)?((0)*(\d)+)?(\.)(\d)+((e|E)(\+|\-)?(\d)+)?</string>
+			<string>((0)*(\d)+)?(\.)(\d)+((e|E)(\+|\-)?(\d)+)?</string>
 			<key>name</key>
 			<string>constant.numeric.double.setlx</string>
 		</dict>
@@ -220,7 +134,7 @@
 			<key>comment</key>
 			<string>atomic value, number</string>
 			<key>match</key>
-			<string>(\-|\+)?(0)*(\d)+</string>
+			<string>(0)*(\d)+</string>
 			<key>name</key>
 			<string>constant.numeric.int.setlx</string>
 		</dict>
@@ -291,7 +205,7 @@
 					<key>match</key>
 					<string>(/)(?!\*|/)</string>
 					<key>name</key>
-					<string>keyword.operator.setlx</string>
+					<string>constant.numeric.fraction.setlx</string>
 				</dict>
 			</array>
 		</dict>
@@ -348,10 +262,6 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#atomic-range-sign</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#atomic-string</string>
 				</dict>
 				<dict>
@@ -364,29 +274,407 @@
 				</dict>
 			</array>
 		</dict>
-		<key>keywords</key>
+		<key>cached-procedure</key>
 		<dict>
-			<key>comment</key>
-			<string>combination of all keyowrds available</string>
+			<key>begin</key>
+			<string>(cachedProcedure)(\s*\()(\s*\w+\s*\,?)*(\s*\))(\s*\{)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.cachedProcedure.setlx</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\}</string>
 			<key>name</key>
-			<string>meta.keyword.setlx</string>
+			<string>meta.cachedProcedure.setlx</string>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>comment</key>
-					<string>iterator marker</string>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+			</array>
+		</dict>
+		<key>call</key>
+		<dict>
+			<key>begin</key>
+			<string>([a-z]\w*)(\s*\()</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>name</key>
+			<string>meta.call.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+			</array>
+		</dict>
+		<key>closure</key>
+		<dict>
+			<key>begin</key>
+			<string>(closure)(\s*\()(\s*\w+\s*\,?)*(\s*\))(\s*\{)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.closure.setlx</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\}</string>
+			<key>name</key>
+			<string>meta.closure.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+			</array>
+		</dict>
+		<key>collections</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#set</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#list</string>
+				</dict>
+			</array>
+		</dict>
+		<key>fucntions</key>
+		<dict>
+			<key>name</key>
+			<string>meta.function.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#procedure</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#cached-procedure</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#closure</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#call</string>
+				</dict>
+			</array>
+		</dict>
+		<key>general-collection</key>
+		<dict>
+			<key>name</key>
+			<string>meta.collection.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>meta.collection.ranges.setlx</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>\:</string>
+							<key>name</key>
+							<string>keyword.operator.setlx</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#iterator-chain</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>meta.collection.conditions.setlx</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>\|</string>
+							<key>name</key>
+							<string>keyword.operator.setlx</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#iterator-chain</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>iterator-chain</key>
+		<dict>
+			<key>name</key>
+			<string>meta.iteratorchain.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#iterator-marker</string>
+				</dict>
+				<dict>
 					<key>match</key>
-					<string>( in )</string>
+					<string>\,</string>
 					<key>name</key>
 					<string>keyword.operator.setlx</string>
 				</dict>
+			</array>
+		</dict>
+		<key>iterator-marker</key>
+		<dict>
+			<key>match</key>
+			<string>( in )</string>
+			<key>name</key>
+			<string>keyword.operator.setlx</string>
+		</dict>
+		<key>keywords</key>
+		<dict>
+			<key>comment</key>
+			<string>combination of all "keyowrds" available</string>
+			<key>patterns</key>
+			<array>
 				<dict>
-					<key>comment</key>
-					<string>range sign</string>
-					<key>match</key>
-					<string>(\.\.)</string>
+					<key>include</key>
+					<string>#range-sign</string>
+				</dict>
+			</array>
+		</dict>
+		<key>lin-alg</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#setl-matrix</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#setl-vector</string>
+				</dict>
+			</array>
+		</dict>
+		<key>list</key>
+		<dict>
+			<key>begin</key>
+			<string>\[</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
 					<key>name</key>
-					<string>keyword.operator.setlx</string>
+					<string>entity.enclosing.list.setlx</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\]</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>entity.enclosing.lisr.setlx</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#general-collection</string>
+				</dict>
+			</array>
+		</dict>
+		<key>procedure</key>
+		<dict>
+			<key>begin</key>
+			<string>(procedure)(\s*\()(\s*\w+\s*\,?)*(\s*\))(\s*\{)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.procedure.setlx</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\}</string>
+			<key>name</key>
+			<string>meta.procedure.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+			</array>
+		</dict>
+		<key>range-sign</key>
+		<dict>
+			<key>match</key>
+			<string>(\.\.)</string>
+			<key>name</key>
+			<string>keyword.operator.setlx</string>
+		</dict>
+		<key>set</key>
+		<dict>
+			<key>begin</key>
+			<string>\{</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>entity.enclosing.set.setlx</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\}</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>entity.enclosing.set.setlx</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#general-collection</string>
+				</dict>
+			</array>
+		</dict>
+		<key>setl-matrix</key>
+		<dict>
+			<key>begin</key>
+			<string>&lt;&lt;</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>entity.enclosing.matrix.setlx</string>
+				</dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.enclosing.matrix.setlx</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\&gt;\&gt;</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>entity.enclosing.matrix.setlx</string>
+				</dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.enclosing.matrix.setlx</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.matrix.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>meta.matrix.setlx</string>
+				</dict>
+			</array>
+		</dict>
+		<key>setl-vector</key>
+		<dict>
+			<key>begin</key>
+			<string>&lt;&lt;</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>entity.enclosing.vector.setlx</string>
+				</dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.enclosing.vector.setlx</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\&gt;\&gt;</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>entity.enclosing.vector.setlx</string>
+				</dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.enclosing.vector.setlx</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.vector.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#atomic-number</string>
+				</dict>
+			</array>
+		</dict>
+		<key>values</key>
+		<dict>
+			<key>name</key>
+			<string>meta.value.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#collections</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#lin-alg</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#atomics</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\_</string>
+					<key>name</key>
+					<string>keyword.control.setlx</string>
 				</dict>
 			</array>
 		</dict>
