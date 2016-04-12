@@ -155,9 +155,8 @@ repository:
   keywords:
     comment: combination of all "keyowrds" available
     patterns:
-    - include: '#implication'
-    - include: '#disjunction'
-    - include: '#conjunction'
+    - include: '#assigment-operators'
+    - include: '#logic-operators'
     - include: '#comparison-operators'
     - include: '#product-operators'
     - include: '#prefix-operators'
@@ -165,15 +164,30 @@ repository:
     - include: '#forall'
     - include: '#negator'
     - include: '#range-sign'
-  implication:
-    name: keyword.operator.implication.setlx
-    match: (\=\>)
-  disjunction:
-    name: keyword.operator.disjunction.setlx
-    match: (\|\|)
-  conjunction:
-    name: keyword.operator.conjunction.setlx
-    match: (\&\&)
+  assigment-operators:
+    patterns:
+    - name: keyword.operator.assigment.setlx
+      match: (\+\=)
+    - name: keyword.operator.assigment.setlx
+      match: (\-\=)
+    - name: keyword.operator.assigment.setlx
+      match: (\*\=)
+    - name: keyword.operator.assigment.setlx
+      match: (/\=)
+    - name: keyword.operator.assigment.setlx
+      match: (\\\=)
+    - name: keyword.operator.assigment.setlx
+      match: (\%\=)
+    - name: keyword.operator.assigment.direct.setlx
+      match: (\:\=)
+  logic-operators:
+    patterns:
+    - name: keyword.operator.logic.setlx
+      match: (\=\>)
+    - name: keyword.operator.logic.setlx
+      match: (\|\|)
+    - name: keyword.operator.logic.setlx
+      match: (\&\&)
   comparison-operators:
     patterns:
     - name: keyword.operator.comparison.setlx
@@ -302,7 +316,7 @@ repository:
     - include: '#atomic-int'
     - include: '#atomic-double'
     - name: constant.numeric.fraction.setlx
-      match: (/)(?!\*|/)
+      match: (/)(?!\*|/|=)
   atomic-double:
     comment: atomic value, double
     name: constant.numeric.double.setlx

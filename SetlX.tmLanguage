@@ -26,6 +26,54 @@
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>assigment-operators</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(\+\=)</string>
+					<key>name</key>
+					<string>keyword.operator.assigment.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(\-\=)</string>
+					<key>name</key>
+					<string>keyword.operator.assigment.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(\*\=)</string>
+					<key>name</key>
+					<string>keyword.operator.assigment.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(/\=)</string>
+					<key>name</key>
+					<string>keyword.operator.assigment.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(\\\=)</string>
+					<key>name</key>
+					<string>keyword.operator.assigment.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(\%\=)</string>
+					<key>name</key>
+					<string>keyword.operator.assigment.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(\:\=)</string>
+					<key>name</key>
+					<string>keyword.operator.assigment.direct.setlx</string>
+				</dict>
+			</array>
+		</dict>
 		<key>atomic-comment</key>
 		<dict>
 			<key>comment</key>
@@ -203,7 +251,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(/)(?!\*|/)</string>
+					<string>(/)(?!\*|/|=)</string>
 					<key>name</key>
 					<string>constant.numeric.fraction.setlx</string>
 				</dict>
@@ -451,20 +499,6 @@
 				</dict>
 			</array>
 		</dict>
-		<key>conjunction</key>
-		<dict>
-			<key>match</key>
-			<string>(\&amp;\&amp;)</string>
-			<key>name</key>
-			<string>keyword.operator.conjunction.setlx</string>
-		</dict>
-		<key>disjunction</key>
-		<dict>
-			<key>match</key>
-			<string>(\|\|)</string>
-			<key>name</key>
-			<string>keyword.operator.disjunction.setlx</string>
-		</dict>
 		<key>exists</key>
 		<dict>
 			<key>match</key>
@@ -573,13 +607,6 @@
 				</dict>
 			</array>
 		</dict>
-		<key>implication</key>
-		<dict>
-			<key>match</key>
-			<string>(\=\&gt;)</string>
-			<key>name</key>
-			<string>keyword.operator.implication.setlx</string>
-		</dict>
 		<key>iterator-chain</key>
 		<dict>
 			<key>name</key>
@@ -613,15 +640,11 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#implication</string>
+					<string>#assigment-operators</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#disjunction</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#conjunction</string>
+					<string>#logic-operators</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -734,6 +757,30 @@
 				<dict>
 					<key>include</key>
 					<string>$self</string>
+				</dict>
+			</array>
+		</dict>
+		<key>logic-operators</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(\=\&gt;)</string>
+					<key>name</key>
+					<string>keyword.operator.logic.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(\|\|)</string>
+					<key>name</key>
+					<string>keyword.operator.logic.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(\&amp;\&amp;)</string>
+					<key>name</key>
+					<string>keyword.operator.logic.setlx</string>
 				</dict>
 			</array>
 		</dict>
