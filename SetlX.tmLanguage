@@ -17,10 +17,6 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#program-flow</string>
-		</dict>
-		<dict>
-			<key>include</key>
 			<string>#fucntions</string>
 		</dict>
 		<dict>
@@ -286,7 +282,7 @@
 			<string>(\")</string>
 			<key>beginCaptures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>string.quoted.setlx</string>
@@ -298,7 +294,7 @@
 			<string>(\")</string>
 			<key>endCaptures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>string.quoted.setlx</string>
@@ -400,7 +396,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>\}</string>
+			<string>(\})</string>
 			<key>name</key>
 			<string>meta.cachedProcedure.setlx</string>
 			<key>patterns</key>
@@ -420,7 +416,7 @@
 			<key>begin</key>
 			<string>([a-z]\w*)(\s*\()</string>
 			<key>end</key>
-			<string>\)</string>
+			<string>(\))</string>
 			<key>name</key>
 			<string>meta.call.setlx</string>
 			<key>patterns</key>
@@ -511,7 +507,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>\}</string>
+			<string>(\})</string>
 			<key>name</key>
 			<string>meta.closure.setlx</string>
 			<key>patterns</key>
@@ -562,19 +558,13 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(&lt;)</string>
-					<key>name</key>
-					<string>keyword.operator.comparison.setlx</string>
-				</dict>
-				<dict>
-					<key>match</key>
 					<string>(&lt;\=)</string>
 					<key>name</key>
 					<string>keyword.operator.comparison.setlx</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(\&gt;)</string>
+					<string>(&lt;)</string>
 					<key>name</key>
 					<string>keyword.operator.comparison.setlx</string>
 				</dict>
@@ -586,13 +576,19 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(in)</string>
+					<string>(\&gt;)</string>
 					<key>name</key>
 					<string>keyword.operator.comparison.setlx</string>
 				</dict>
 				<dict>
 					<key>match</key>
 					<string>(notin)</string>
+					<key>name</key>
+					<string>keyword.operator.comparison.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(in)</string>
 					<key>name</key>
 					<string>keyword.operator.comparison.setlx</string>
 				</dict>
@@ -614,6 +610,13 @@
 			<string>(\})</string>
 			<key>name</key>
 			<string>meta.elseBlock.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+			</array>
 		</dict>
 		<key>exists</key>
 		<dict>
@@ -694,7 +697,7 @@
 					<array>
 						<dict>
 							<key>match</key>
-							<string>\:</string>
+							<string>(\:)</string>
 							<key>name</key>
 							<string>keyword.operator.setlx</string>
 						</dict>
@@ -711,7 +714,7 @@
 					<array>
 						<dict>
 							<key>match</key>
-							<string>\|</string>
+							<string>(\|)</string>
 							<key>name</key>
 							<string>keyword.operator.setlx</string>
 						</dict>
@@ -875,20 +878,20 @@
 		<key>list</key>
 		<dict>
 			<key>begin</key>
-			<string>\[</string>
+			<string>(\[)</string>
 			<key>beginCaptures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>entity.enclosing.list.setlx</string>
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>\]</string>
+			<string>(\])</string>
 			<key>endCaptures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>entity.enclosing.list.setlx</string>
@@ -905,9 +908,9 @@
 		<key>list-access</key>
 		<dict>
 			<key>begin</key>
-			<string>((\w|\])+\s*)(\[)</string>
+			<string>((\w|\]))(\[)</string>
 			<key>end</key>
-			<string>\]</string>
+			<string>(\])</string>
 			<key>name</key>
 			<string>meta.list.access.setlx</string>
 			<key>patterns</key>
@@ -1106,7 +1109,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>\}</string>
+			<string>(\})</string>
 			<key>name</key>
 			<string>meta.procedure.setlx</string>
 			<key>patterns</key>
@@ -1280,20 +1283,20 @@
 		<key>set</key>
 		<dict>
 			<key>begin</key>
-			<string>\{</string>
+			<string>(\{)</string>
 			<key>beginCaptures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>entity.enclosing.set.setlx</string>
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>\}</string>
+			<string>(\})</string>
 			<key>endCaptures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>entity.enclosing.set.setlx</string>
@@ -1310,14 +1313,9 @@
 		<key>setl-matrix</key>
 		<dict>
 			<key>begin</key>
-			<string>&lt;&lt;</string>
+			<string>(&lt;&lt;)</string>
 			<key>beginCaptures</key>
 			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>entity.enclosing.matrix.setlx</string>
-				</dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
@@ -1325,14 +1323,9 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>\&gt;\&gt;</string>
+			<string>(\&gt;\&gt;)</string>
 			<key>endCaptures</key>
 			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>entity.enclosing.matrix.setlx</string>
-				</dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
@@ -1356,14 +1349,9 @@
 		<key>setl-vector</key>
 		<dict>
 			<key>begin</key>
-			<string>&lt;&lt;</string>
+			<string>(&lt;&lt;)</string>
 			<key>beginCaptures</key>
 			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>entity.enclosing.vector.setlx</string>
-				</dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
@@ -1371,14 +1359,9 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>\&gt;\&gt;</string>
+			<string>(\&gt;\&gt;)</string>
 			<key>endCaptures</key>
 			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>entity.enclosing.vector.setlx</string>
-				</dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
@@ -1460,6 +1443,10 @@
 					<key>name</key>
 					<string>keyword.control.setlx</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
 			</array>
 		</dict>
 		<key>values</key>
@@ -1482,7 +1469,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\_</string>
+					<string>(\_)</string>
 					<key>name</key>
 					<string>keyword.control.setlx</string>
 				</dict>
