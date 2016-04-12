@@ -10,6 +10,8 @@ patterns:
 - include: '#fucntions'
 - include: '#values'
 - include: '#keywords'
+- name: meta.variable.setlx
+  match: ([a-z]\w*)
 
 repository:
   fucntions:
@@ -247,11 +249,10 @@ repository:
     name: meta.iteratorchain.setlx
     patterns:
       - include: '#iterator-marker'
-      - name: keyword.operator.setlx
-        match: \,
+      - match: \,
   iterator-marker:        # a in x
     name: keyword.operator.setlx
-    match: ( in )
+    match: (in)
   range-sign:             # ..
     name: keyword.operator.setlx
     match: (\.\.)

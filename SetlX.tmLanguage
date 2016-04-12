@@ -23,6 +23,12 @@
 			<key>include</key>
 			<string>#keywords</string>
 		</dict>
+		<dict>
+			<key>match</key>
+			<string>([a-z]\w*)</string>
+			<key>name</key>
+			<string>meta.variable.setlx</string>
+		</dict>
 	</array>
 	<key>repository</key>
 	<dict>
@@ -620,15 +626,13 @@
 				<dict>
 					<key>match</key>
 					<string>\,</string>
-					<key>name</key>
-					<string>keyword.operator.setlx</string>
 				</dict>
 			</array>
 		</dict>
 		<key>iterator-marker</key>
 		<dict>
 			<key>match</key>
-			<string>( in )</string>
+			<string>(in)</string>
 			<key>name</key>
 			<string>keyword.operator.setlx</string>
 		</dict>
