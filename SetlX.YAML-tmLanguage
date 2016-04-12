@@ -7,6 +7,7 @@ uuid: 8be6972f-85b1-4d39-b3b5-68bbfdb44d84
 
 
 patterns:
+- include: '#statements'
 - include: '#program-flow'
 - include: '#fucntions'
 - include: '#values'
@@ -16,7 +17,79 @@ patterns:
 
 
 repository:
-  program-flow:
+  statements:
+    patterns:
+    - include: '#class'
+    - include: '#branches'
+    #- include: '#loops'
+    - include: '#matches'
+  class:
+    name: meta.class.setlx
+    begin: (class)(\s+)([a-z]\w*)
+    beginCaptures:
+      '1': {name: keyword.other.setlx}
+      '3': {name: entity.class.name.setlx}
+    patterns:
+    - name: meta.class.args.setlx
+      begin: (\()
+      patterns:
+      - include: '$self'
+      end: (\)\s*\{)
+    - name: meta.class.staticMembers.setlx
+      begin: (static)(\s*\{)
+      beginCaptures:
+        '1': {name: keyword.other.setlx}
+      patterns:
+      - include: '$self'
+      end: (\})
+    - include: '$self'
+    end: (\}\;)
+
+  branches:
+    patterns:
+    - include: '#if'
+    - include: '#else-block'
+    - include: '#switch'
+  if: 
+    name: meta.if.setlx
+    begin: (else\s+)?(if)
+    beginCaptures:
+      '1': {name: keyword.control.setlx}
+      '2': {name: keyword.control.setlx}
+    patterns:
+    - name: meta.if.condition.setlx
+      begin: (\()
+      patterns:
+      - include: '$self'
+      end: (\)\s*\{)
+    - include: '$self'
+    end: (\})
+  else-block:
+    name: meta.elseBlock.setlx
+    begin: (else)(\s*\{)
+    beginCaptures:
+      '1': {name: keyword.control.setlx}
+    end: (\})
+  switch:
+    name: meta.switch.setlx
+    begin: (switch)(\s*\{)
+    beginCaptures:
+      '1': {name: keyword.control.setlx}
+    patterns:
+    - name: meta.switch.case.setlx
+      begin: (case)
+      beginCaptures:
+        '1': {name: keyword.control.setlx}
+      patterns:
+      - include: '$self'
+      end: (\:)
+    - name: keyword.control.setlx
+      match: (default\s*\:)
+    end: (\})
+
+  #loops:
+  
+  matches:
     patterns:
     - include: '#match'
     - include: '#scan'
@@ -30,7 +103,7 @@ repository:
       name: meta.match.expression.setlx
       patterns:
       - include: '$self'
-      end: (\)\s*)(\{)
+      end: (\)\s*\{)
     - name: meta.match.case.setlx
       begin: (case)
       beginCaptures:
@@ -43,7 +116,7 @@ repository:
         '1': {name: keyword.control.setlx}
     - include: '#regex-branch'
     - name: keyword.control.setlx
-      match: (default\:)
+      match: (default\s*\:)
     - include: '$self'
     end: (\})
   scan:
@@ -61,7 +134,7 @@ repository:
         '2': {name: keyword.control.setlx}
     - include: '#regex-branch'
     - name: keyword.control.setlx
-      match: (default\:)
+      match: (default\s*\:)
     - include: '$self'
     end: (\})
   regex-branch:
