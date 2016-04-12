@@ -21,28 +21,38 @@ repository:
     - include: '#call'
   procedure:
     name: meta.procedure.setlx
-    begin: (procedure)(\s*\()(\s*\w+\s*\,?)*(\s*\))(\s*\{)
+    begin: (procedure)
     beginCaptures:
       '1': {name: storage.type.procedure.setlx}
     patterns:
+    - include: '#function-signature'
     - include: '$self'
     end: \}
   cached-procedure:
     name: meta.cachedProcedure.setlx
-    begin: (cachedProcedure)(\s*\()(\s*\w+\s*\,?)*(\s*\))(\s*\{)
+    begin: (cachedProcedure)
     beginCaptures:
       '1': {name: storage.type.cachedProcedure.setlx}
     patterns:
+    - include: '#function-signature'
     - include: '$self'
     end: \}
   closure:
     name: meta.closure.setlx
-    begin: (closure)(\s*\()(\s*\w+\s*\,?)*(\s*\))(\s*\{)
+    begin: (closure)
     beginCaptures:
       '1': {name: storage.type.closure.setlx}
     patterns:
+    - include: '#function-signature'
     - include: '$self'
     end: \}
+  function-signature:
+    begin: (\s*\()
+    patterns:
+    - name: keyword.control.defaultParam.setlx
+      match: (\:\=)
+    - include: '$self'
+    end: (\)\s*\{)
   call:
     name: meta.call.setlx
     begin: ([a-z]\w*)(\s*\()
@@ -87,7 +97,7 @@ repository:
     - include: '#general-collection'
     end: \]
     endCaptures:
-      '0': {name: entity.enclosing.lisr.setlx}
+      '0': {name: entity.enclosing.list.setlx}
   general-collection:
     name: meta.collection.setlx
     patterns:
@@ -300,7 +310,7 @@ repository:
       '0': {name: string.quoted.setlx}
     patterns:
     - name: string.quoted.setlx
-      match: ((?!(\\.)).)*
+      match: ((?!(\\.)).)
     - name: constant.character.escape.setlx
       match: (\\.)
     end: (\")

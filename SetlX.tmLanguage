@@ -248,7 +248,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>(\")((?!\")(\\.)*.)*(\")</string>
+					<string>((?!(\\.)).)</string>
 					<key>name</key>
 					<string>string.quoted.setlx</string>
 				</dict>
@@ -310,7 +310,7 @@
 		<key>cached-procedure</key>
 		<dict>
 			<key>begin</key>
-			<string>(cachedProcedure)(\s*\()(\s*\w+\s*\,?)*(\s*\))(\s*\{)</string>
+			<string>(cachedProcedure)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -325,6 +325,10 @@
 			<string>meta.cachedProcedure.setlx</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#function-signature</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>$self</string>
@@ -350,7 +354,7 @@
 		<key>closure</key>
 		<dict>
 			<key>begin</key>
-			<string>(closure)(\s*\()(\s*\w+\s*\,?)*(\s*\))(\s*\{)</string>
+			<string>(closure)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -365,6 +369,10 @@
 			<string>meta.closure.setlx</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#function-signature</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>$self</string>
@@ -492,6 +500,26 @@
 				<dict>
 					<key>include</key>
 					<string>#call</string>
+				</dict>
+			</array>
+		</dict>
+		<key>function-signature</key>
+		<dict>
+			<key>begin</key>
+			<string>(\s*\()</string>
+			<key>end</key>
+			<string>(\)\s*\{)</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(\:\=)</string>
+					<key>name</key>
+					<string>keyword.control.defaultParam.setlx</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
 				</dict>
 			</array>
 		</dict>
@@ -654,7 +682,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>entity.enclosing.lisr.setlx</string>
+					<string>entity.enclosing.list.setlx</string>
 				</dict>
 			</dict>
 			<key>patterns</key>
@@ -739,7 +767,7 @@
 		<key>procedure</key>
 		<dict>
 			<key>begin</key>
-			<string>(procedure)(\s*\()(\s*\w+\s*\,?)*(\s*\))(\s*\{)</string>
+			<string>(procedure)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -754,6 +782,10 @@
 			<string>meta.procedure.setlx</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#function-signature</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>$self</string>
