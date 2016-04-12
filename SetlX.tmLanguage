@@ -13,6 +13,10 @@
 	<array>
 		<dict>
 			<key>include</key>
+			<string>#program-flow</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#fucntions</string>
 		</dict>
 		<dict>
@@ -550,7 +554,7 @@
 		<key>function-signature</key>
 		<dict>
 			<key>begin</key>
-			<string>(\s*\()</string>
+			<string>(\()</string>
 			<key>end</key>
 			<string>(\)\s*\{)</string>
 			<key>patterns</key>
@@ -788,6 +792,88 @@
 				</dict>
 			</array>
 		</dict>
+		<key>match</key>
+		<dict>
+			<key>begin</key>
+			<string>(match)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.setlx</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\})</string>
+			<key>name</key>
+			<string>meta.match.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(\()</string>
+					<key>end</key>
+					<string>(\)\s*)(\{)</string>
+					<key>name</key>
+					<string>meta.match.expression.setlx</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>$self</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(case)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.setlx</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(\:)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.setlx</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.match.case.setlx</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>(\|)</string>
+							<key>name</key>
+							<string>keyword.control.setlx</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#regex-branch</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(default\:)</string>
+					<key>name</key>
+					<string>keyword.control.setlx</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+			</array>
+		</dict>
 		<key>negator</key>
 		<dict>
 			<key>match</key>
@@ -907,12 +993,139 @@
 				</dict>
 			</array>
 		</dict>
+		<key>program-flow</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#match</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#scan</string>
+				</dict>
+			</array>
+		</dict>
 		<key>range-sign</key>
 		<dict>
 			<key>match</key>
 			<string>(\.\.)</string>
 			<key>name</key>
 			<string>keyword.operator.setlx</string>
+		</dict>
+		<key>regex-branch</key>
+		<dict>
+			<key>name</key>
+			<string>meta.regexBranch.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(regex)</string>
+					<key>name</key>
+					<string>keyword.control.setlx</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(\')</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>string.regexp.setlx</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(\')</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>string.regexp.setlx</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>string.regexp.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(as)</string>
+					<key>name</key>
+					<string>keyword.control.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(\|)</string>
+					<key>name</key>
+					<string>keyword.control.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(\:\s+)</string>
+					<key>name</key>
+					<string>keyword.control.setlx</string>
+				</dict>
+			</array>
+		</dict>
+		<key>scan</key>
+		<dict>
+			<key>begin</key>
+			<string>(scan)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.setlx</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\})</string>
+			<key>name</key>
+			<string>meta.scan.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(\()</string>
+					<key>end</key>
+					<string>(\)\s*)(using)?(\s*\w*\s*)?(\{)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.setlx</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.scan.expression.setlx</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>$self</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#regex-branch</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(default\:)</string>
+					<key>name</key>
+					<string>keyword.control.setlx</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+			</array>
 		</dict>
 		<key>set</key>
 		<dict>

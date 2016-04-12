@@ -7,13 +7,82 @@ uuid: 8be6972f-85b1-4d39-b3b5-68bbfdb44d84
 
 
 patterns:
+- include: '#program-flow'
 - include: '#fucntions'
 - include: '#values'
 - include: '#keywords'
 - name: meta.variable.setlx
   match: ([a-z]\w*)
 
+
 repository:
+  program-flow:
+    patterns:
+    - include: '#match'
+    - include: '#scan'
+  match:
+    name: meta.match.setlx
+    begin: (match)
+    beginCaptures:
+      '1': {name: keyword.control.setlx}
+    patterns:
+    - begin: (\()
+      name: meta.match.expression.setlx
+      patterns:
+      - include: '$self'
+      end: (\)\s*)(\{)
+    - name: meta.match.case.setlx
+      begin: (case)
+      beginCaptures:
+        '1': {name: keyword.control.setlx}
+      patterns:
+      - name: keyword.control.setlx
+        match: (\|)
+      end: (\:)
+      endCaptures:
+        '1': {name: keyword.control.setlx}
+    - include: '#regex-branch'
+    - name: keyword.control.setlx
+      match: (default\:)
+    - include: '$self'
+    end: (\})
+  scan:
+    name: meta.scan.setlx
+    begin: (scan)
+    beginCaptures:
+      '1': {name: keyword.control.setlx}
+    patterns:
+    - name: meta.scan.expression.setlx
+      begin: (\()
+      patterns:
+      - include: '$self'
+      end: (\)\s*)(using)?(\s*\w*\s*)?(\{)
+      endCaptures:
+        '2': {name: keyword.control.setlx}
+    - include: '#regex-branch'
+    - name: keyword.control.setlx
+      match: (default\:)
+    - include: '$self'
+    end: (\})
+  regex-branch:
+    name: meta.regexBranch.setlx
+    patterns:
+    - name: keyword.control.setlx
+      match: (regex)
+    - name: string.regexp.setlx
+      begin: (\')
+      beginCaptures:
+        '1': {name: string.regexp.setlx}
+      end: (\')
+      endCaptures:
+        '1': {name: string.regexp.setlx}
+    - name: keyword.control.setlx
+      match: (as)
+    - name: keyword.control.setlx
+      match: (\|)
+    - name: keyword.control.setlx
+      match: (\:\s+)
+
   fucntions:
     name: meta.function.setlx
     patterns:
@@ -58,7 +127,7 @@ repository:
     - include: '$self'
     end: \}
   function-signature:
-    begin: (\s*\()
+    begin: (\()
     patterns:
     - name: keyword.control.defaultParam.setlx
       match: (\:\=)
