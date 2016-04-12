@@ -487,6 +487,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#lambda</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#procedure</string>
 				</dict>
 				<dict>
@@ -646,6 +650,30 @@
 				<dict>
 					<key>include</key>
 					<string>#range-sign</string>
+				</dict>
+			</array>
+		</dict>
+		<key>lambda</key>
+		<dict>
+			<key>name</key>
+			<string>meta.lambda.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#list</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(\|\-\&gt;)</string>
+					<key>name</key>
+					<string>storage.type.lambda.procedure.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(\|\=\&gt;)</string>
+					<key>name</key>
+					<string>storage.type.lambda.closure.setlx</string>
 				</dict>
 			</array>
 		</dict>

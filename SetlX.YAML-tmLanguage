@@ -15,10 +15,19 @@ repository:
   fucntions:
     name: meta.function.setlx
     patterns:
+    - include: '#lambda'
     - include: '#procedure'
     - include: '#cached-procedure'
     - include: '#closure'
     - include: '#call'
+  lambda:
+    name: meta.lambda.setlx
+    patterns:
+    - include: '#list'
+    - name: storage.type.lambda.procedure.setlx
+      match: (\|\-\>)
+    - name: storage.type.lambda.closure.setlx
+      match: (\|\=\>)
   procedure:
     name: meta.procedure.setlx
     begin: (procedure)
