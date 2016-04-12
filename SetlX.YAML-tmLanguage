@@ -295,7 +295,17 @@ repository:
   atomic-string:
     comment: atomic value, string
     name: string.quoted.setlx
-    match: (\")((?!\")(\\.)*.)*(\")
+    begin: (\")
+    beginCaptures:
+      '0': {name: string.quoted.setlx}
+    patterns:
+    - name: string.quoted.setlx
+      match: ((?!(\\.)).)*
+    - name: constant.character.escape.setlx
+      match: (\\.)
+    end: (\")
+    endCaptures:
+      '0': {name: string.quoted.setlx}
   atomic-literal:
     comment: atomic value, literal  # a string whose escape characters, etc. 
                                     #   aren't interpteted
