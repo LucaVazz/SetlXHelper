@@ -594,6 +594,53 @@
 				</dict>
 			</array>
 		</dict>
+		<key>do-while</key>
+		<dict>
+			<key>begin</key>
+			<string>(do)(\s*)(\{)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.setlx</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\)\;)</string>
+			<key>name</key>
+			<string>meta.doWhile.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(\})(\s*)(while)(\s*)(\()</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.setlx</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(\)\s*\{)</string>
+					<key>name</key>
+					<string>meta.doWhile.condition.setlx</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>$self</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+			</array>
+		</dict>
 		<key>else-block</key>
 		<dict>
 			<key>begin</key>
@@ -624,6 +671,51 @@
 			<string>(exists)</string>
 			<key>name</key>
 			<string>keyword.operator.setlx</string>
+		</dict>
+		<key>for</key>
+		<dict>
+			<key>begin</key>
+			<string>(for)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.setlx</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\})</string>
+			<key>name</key>
+			<string>meta.for.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(\()</string>
+					<key>end</key>
+					<string>(\)\s*\{)</string>
+					<key>name</key>
+					<string>meta.for.iterators.setlx</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#iterator-chain</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>(\|)</string>
+							<key>name</key>
+							<string>keyword.operator.setlx</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+			</array>
 		</dict>
 		<key>forall</key>
 		<dict>
@@ -942,6 +1034,24 @@
 					<string>(\&amp;\&amp;)</string>
 					<key>name</key>
 					<string>keyword.operator.logic.setlx</string>
+				</dict>
+			</array>
+		</dict>
+		<key>loops</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#for</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#while</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#do-while</string>
 				</dict>
 			</array>
 		</dict>
@@ -1394,6 +1504,10 @@
 					<key>include</key>
 					<string>#matches</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#loops</string>
+				</dict>
 			</array>
 		</dict>
 		<key>switch</key>
@@ -1472,6 +1586,45 @@
 					<string>(\_)</string>
 					<key>name</key>
 					<string>keyword.control.setlx</string>
+				</dict>
+			</array>
+		</dict>
+		<key>while</key>
+		<dict>
+			<key>begin</key>
+			<string>(while)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.setlx</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\})</string>
+			<key>name</key>
+			<string>meta.while.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(\()</string>
+					<key>end</key>
+					<string>(\)\s*\{)</string>
+					<key>name</key>
+					<string>meta.while.condition.setlx</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>$self</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
 				</dict>
 			</array>
 		</dict>

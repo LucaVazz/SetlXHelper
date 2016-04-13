@@ -21,6 +21,7 @@ repository:
     - include: '#class'
     - include: '#branches'
     - include: '#matches'
+    - include: '#loops'
 
   class:
     name: meta.class.setlx
@@ -88,6 +89,55 @@ repository:
       match: (default\s*\:)
     - include: '$self'
     end: (\})
+
+  loops:
+    patterns:
+    - include: '#for'
+    - include: '#while'
+    - include: '#do-while'
+  for:
+    name: meta.for.setlx
+    begin: (for)
+    beginCaptures:
+      '1': {name: keyword.control.setlx}
+    patterns:
+    - name: meta.for.iterators.setlx
+      begin: (\()
+      patterns:
+      - include: '#iterator-chain'
+      - name: keyword.operator.setlx
+        match: (\|)
+      end: (\)\s*\{)
+    - include: '$self'
+    end: (\})
+  while:
+    name: meta.while.setlx
+    begin: (while)
+    beginCaptures:
+      '1': {name: keyword.control.setlx}
+    patterns:
+    - name: meta.while.condition.setlx
+      begin: (\()
+      patterns:
+      - include: '$self'
+      end: (\)\s*\{)
+    - include: '$self'
+    end: (\})
+  do-while:
+    name: meta.doWhile.setlx
+    begin: (do)(\s*)(\{)
+    beginCaptures:
+      '1': {name: keyword.control.setlx}
+    patterns:
+    - name: meta.doWhile.condition.setlx
+      begin: (\})(\s*)(while)(\s*)(\()
+      beginCaptures:
+        '3': {name: keyword.control.setlx}
+      patterns:
+      - include: '$self'
+      end: (\)\s*\{)
+    - include: '$self'
+    end: (\)\;)
   
   matches:
     patterns:
