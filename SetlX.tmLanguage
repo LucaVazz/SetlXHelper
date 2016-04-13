@@ -36,6 +36,30 @@
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>afterbacktrack</key>
+		<dict>
+			<key>begin</key>
+			<string>(afterBacktrack)(\s*)(\{)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.setlx</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\})</string>
+			<key>name</key>
+			<string>meta.check.afterbacktrack.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+			</array>
+		</dict>
 		<key>assigment-operators</key>
 		<dict>
 			<key>patterns</key>
@@ -427,6 +451,89 @@
 				</dict>
 			</array>
 		</dict>
+		<key>catch</key>
+		<dict>
+			<key>begin</key>
+			<string>((catch)|(catchLng)|(catchUsr))</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.setlx</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\})</string>
+			<key>name</key>
+			<string>meta.catch.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(\()</string>
+					<key>end</key>
+					<string>(\)\s*\{)</string>
+					<key>name</key>
+					<string>meta.catch.evar.setlx</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>$self</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+			</array>
+		</dict>
+		<key>check</key>
+		<dict>
+			<key>begin</key>
+			<string>(check)(\s*)(\{)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.setlx</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\})</string>
+			<key>name</key>
+			<string>meta.check.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(backtrack)</string>
+					<key>name</key>
+					<string>meta.check.backtrackcall.setlx keyword.control.setlx</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+			</array>
+		</dict>
+		<key>check-backtrack</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#check</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#afterbacktrack</string>
+				</dict>
+			</array>
+		</dict>
 		<key>class</key>
 		<dict>
 			<key>begin</key>
@@ -662,6 +769,20 @@
 				<dict>
 					<key>include</key>
 					<string>$self</string>
+				</dict>
+			</array>
+		</dict>
+		<key>error-handling</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#try-catch</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#check-backtrack</string>
 				</dict>
 			</array>
 		</dict>
@@ -1508,6 +1629,10 @@
 					<key>include</key>
 					<string>#loops</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#error-handling</string>
+				</dict>
 			</array>
 		</dict>
 		<key>switch</key>
@@ -1560,6 +1685,44 @@
 				<dict>
 					<key>include</key>
 					<string>$self</string>
+				</dict>
+			</array>
+		</dict>
+		<key>try</key>
+		<dict>
+			<key>begin</key>
+			<string>(try)(\s*)(\{)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.setlx</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\})</string>
+			<key>name</key>
+			<string>meta.try.setlx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+			</array>
+		</dict>
+		<key>try-catch</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#try</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#catch</string>
 				</dict>
 			</array>
 		</dict>

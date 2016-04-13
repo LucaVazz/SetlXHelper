@@ -22,6 +22,7 @@ repository:
     - include: '#branches'
     - include: '#matches'
     - include: '#loops'
+    - include: '#error-handling'
 
   class:
     name: meta.class.setlx
@@ -139,6 +140,58 @@ repository:
     - include: '$self'
     end: (\)\;)
   
+  error-handling:
+    patterns:
+    - include: '#try-catch'
+    - include: '#check-backtrack'
+  try-catch:
+    patterns:
+    - include: '#try'
+    - include: '#catch'
+  try:
+    name: meta.try.setlx
+    begin: (try)(\s*)(\{)
+    beginCaptures:
+      '1': {name: keyword.control.setlx}
+    patterns:
+    - include: '$self'
+    end: (\})
+  catch:
+    name: meta.catch.setlx
+    begin: ((catch)|(catchLng)|(catchUsr))
+    beginCaptures:
+      '1': {name: keyword.control.setlx}
+    patterns:
+    - name: meta.catch.evar.setlx
+      begin: (\()
+      patterns:
+      - include: '$self'
+      end: (\)\s*\{)
+    - include: '$self'
+    end: (\})
+  check-backtrack:
+    patterns:
+    - include: '#check'
+    - include: '#afterbacktrack'
+  check:
+    name: meta.check.setlx
+    begin: (check)(\s*)(\{)
+    beginCaptures:
+      '1': {name: keyword.control.setlx}
+    patterns:
+    - name: meta.check.backtrackcall.setlx keyword.control.setlx
+      match: (backtrack)
+    - include: '$self'
+    end: (\})
+  afterbacktrack:
+    name: meta.check.afterbacktrack.setlx
+    begin: (afterBacktrack)(\s*)(\{)
+    beginCaptures:
+      '1': {name: keyword.control.setlx}
+    patterns:
+    - include: '$self'
+    end: (\})
+
   matches:
     patterns:
     - include: '#match'
