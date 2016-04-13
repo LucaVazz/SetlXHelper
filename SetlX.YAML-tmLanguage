@@ -23,6 +23,10 @@ repository:
     - include: '#matches'
     - include: '#loops'
     - include: '#error-handling'
+    - name: meta.abort.setlx keyword.control.setlx
+      match: (exit)
+    - name: meta.abort.setlx keyword.control.setlx
+      match: (return)
 
   class:
     name: meta.class.setlx
@@ -109,6 +113,8 @@ repository:
       - name: keyword.operator.setlx
         match: (\|)
       end: (\)\s*\{)
+    - name: meta.abort.setlx keyword.control.setlx
+      match: ((continue)|(break))
     - include: '$self'
     end: (\})
   while:
@@ -122,6 +128,8 @@ repository:
       patterns:
       - include: '$self'
       end: (\)\s*\{)
+    - name: meta.abort.setlx keyword.control.setlx
+      match: ((continue)|(break))
     - include: '$self'
     end: (\})
   do-while:

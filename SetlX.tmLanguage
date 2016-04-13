@@ -833,6 +833,12 @@
 					</array>
 				</dict>
 				<dict>
+					<key>match</key>
+					<string>((continue)|(break))</string>
+					<key>name</key>
+					<string>meta.abort.setlx keyword.control.setlx</string>
+				</dict>
+				<dict>
 					<key>include</key>
 					<string>$self</string>
 				</dict>
@@ -1633,6 +1639,18 @@
 					<key>include</key>
 					<string>#error-handling</string>
 				</dict>
+				<dict>
+					<key>match</key>
+					<string>(exit)</string>
+					<key>name</key>
+					<string>meta.abort.setlx keyword.control.setlx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(return)</string>
+					<key>name</key>
+					<string>meta.abort.setlx keyword.control.setlx</string>
+				</dict>
 			</array>
 		</dict>
 		<key>switch</key>
@@ -1784,6 +1802,12 @@
 							<string>$self</string>
 						</dict>
 					</array>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>((continue)|(break))</string>
+					<key>name</key>
+					<string>meta.abort.setlx keyword.control.setlx</string>
 				</dict>
 				<dict>
 					<key>include</key>
