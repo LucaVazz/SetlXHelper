@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[switch {
+    ${0:}
+}]]></content>
+    <tabTrigger>switch</tabTrigger>
+    <scope>source.setlx</scope>
+    <description>   switch - block</description>
+</snippet>

@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[{ ${1:definition}
+  : ${2:ranges}
+  | ${3:condition} }]]></content>
+    <tabTrigger>set</tabTrigger>
+    <scope>source.setlx</scope>
+    <description>   definition of a set</description>
+</snippet>

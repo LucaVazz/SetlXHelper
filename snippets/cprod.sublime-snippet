@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[cachedProcedure(${1:arguments}) {
+	${2:body}
+	${3://return value;}
+};]]></content>
+    <tabTrigger>cprod</tabTrigger>
+    <scope>source.setlx</scope>
+    <description>   definition of a cached procedure</description>
+</snippet>

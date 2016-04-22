@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[if(${1:test}) {
+    ${2:body}
+}]]></content>
+    }
+    <tabTrigger>if</tabTrigger>
+    <scope>source.setlx</scope>
+    <description>   if - statement</description>
+</snippet>

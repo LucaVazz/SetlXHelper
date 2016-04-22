@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[procedure(${1:arguments}) {
+	${2:body}
+	${3://return value;}
+};]]></content>
+    <tabTrigger>prod</tabTrigger>
+    <scope>source.setlx</scope>
+    <description>   definition of a procedure</description>
+</snippet>
