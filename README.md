@@ -20,7 +20,7 @@ I'm fairly sure you are convinced now ;)
 ## Using the Features
 #### Syntax Definitions
 Just type code ;)
-![Syntax Definitions](screenshots/readme_syntax.PNG)
+![Illustration of the Syntax Definitions](screenshots/readme_syntax.PNG)
 *Keep in mind: The colors don't come from the Helper-Plugin. You can choose them as you like by selecting a Color Scheme you like from the* Preferences *Menu of Sublime Text.*
 
 
@@ -29,11 +29,18 @@ Open the Command Palette (see above) and select `SetlX Helper: Open the SetlX-Qu
 A new browser-window will open to display the Quickreference.
 
 
+#### Type Coomon Structures Faster With Snippets
+To insert a snippet, just enter its keyword (which is its name, if not noted otherwise below) and press <kbd>Enter</kbd> to insert it. You can then jump through the placeholder by pressing <kbd>Tab</kbd> (and insert a "real" tab by pressing <kbd>Shift</kbd>+<kbd>Tab</kbd>).
+![Demonstration of Developing with Snippets](screenshots/readme_snippets.GIF)
+
+**Available snippets:** defenition of a `set` / `list` / `closure` / `procedure` / `cached procedure`, `if`-/`else if`-/`else`- / `match` - / `swtich` - statements, `for` - / `while` - loops, try-catch - (keyword: `catch`) / `trace` - blocks, `case` - / `default` - statements.
+
+
+
 
 ## Features to Come Soon / ToDo
 | Version |                      Feature                      |                                                                             optional Description                                                                             |
 |---------|---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 0.3.0   | snippets                                          | for faster developing by automatically completing standard-structures like for-loops/set-definitions/etc.                                                                    |
 | 0.4.0   | build-system + error-parsing                      | start your program right from within Sublime Text, see the successful output and get the parsed errors directly pinned to the troubled position in your program              |
 | 0.5.0   | real-time basic mistake warning                   | marks common (dumb) mistakes (like forgetting a semicolon/a closing bracket, using commas in a vector-definition, etc.) with a warning in real-time in your file as you type |
 
