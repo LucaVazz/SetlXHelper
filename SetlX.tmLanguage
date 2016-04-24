@@ -778,6 +778,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#throw</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#try-catch</string>
 				</dict>
 				<dict>
@@ -1705,6 +1709,13 @@
 					<string>$self</string>
 				</dict>
 			</array>
+		</dict>
+		<key>throw</key>
+		<dict>
+			<key>match</key>
+			<string>(throw)</string>
+			<key>name</key>
+			<string>keyword.control.setlx</string>
 		</dict>
 		<key>try</key>
 		<dict>
