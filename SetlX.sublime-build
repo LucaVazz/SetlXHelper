@@ -1,0 +1,7 @@
+{
+	"cmd": ["setlx", "$file"],
+	"selector": "source.setlx",
+    "windows": {
+        "cmd": ["setlx.cmd", "$file"]
+    }
+}

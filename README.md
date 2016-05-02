@@ -22,6 +22,7 @@ I'm fairly sure you are convinced now ;)
 Just type code ;)
 ![Illustration of the Syntax Definitions](screenshots/readme_syntax.PNG)
 *Keep in mind: The colors don't come from the Helper-Plugin. You can choose them as you like by selecting a Color Scheme you like from the* Preferences *Menu of Sublime Text.*
+I recommend using the *Monokai Extended* Color Scheme.
 
 
 #### Quickly Open the [Quickreference](https://github.com/LucaVazz/SetlXQuickreference/blob/master/SetlX-Quickreference.pdf)
@@ -29,25 +30,31 @@ Open the Command Palette (see above) and select `SetlX Helper: Open the SetlX-Qu
 A new browser-window will open to display the Quickreference.
 
 
-#### Type Coomon Structures Faster With Snippets
-To insert a snippet, just enter its keyword (which is its name, if not noted otherwise below) and press <kbd>Enter</kbd> to insert it. You can then jump through the placeholder by pressing <kbd>Tab</kbd> (and insert a "real" tab by pressing <kbd>Shift</kbd>+<kbd>Tab</kbd>).
+#### Type Common Structures Faster With Snippets
+To insert a snippet, just enter its keyword (which is its name, if not noted otherwise below) and press <kbd>Enter</kbd> to insert it. You can then jump through the placeholders by pressing <kbd>Tab</kbd> (and insert a "real" tab by pressing <kbd>Shift</kbd>+<kbd>Tab</kbd>).
 ![Demonstration of Developing with Snippets](screenshots/readme_snippets.GIF)
 
-**Available snippets:** defenition of a `set` / `list` / `closure` / `procedure` / `cached procedure`, `if`-/`else if`-/`else`- / `match` - / `swtich` - statements, `for` - / `while` - loops, try-catch - (keyword: `catch`) / `trace` - blocks, `case` - / `default` - statements.
+**Available snippets:** definition of a `set` / `list` / `closure` / `procedure` / `cached procedure`, `if`-/`else if`-/`else`- / `match` - / `swtich` - statements, `for` - / `while` - loops, try-catch - (keyword: `catch`) / `trace` - blocks, `case` - / `default` - statements.
 
+
+#### Build System
+(For now) you need to install SetlX as described in its manual. This means that you should be able to type `setlx` into a console-window and get the live interpreter fired up.
+Make sure that **SetlX** is selected as *Build System* in the *Tools*-Menu.
+
+After that, you can just press <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>B</kbd> to start your SetlX-program and view its results inside Sublie Text own console (at the bottom of your window).
 
 
 
 ## Features to Come Soon / ToDo
-| Version |                      Feature                      |                                                                             optional Description                                                                             |
-|---------|---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 0.4.0   | build-system + error-parsing                      | start your program right from within Sublime Text, see the successful output and get the parsed errors directly pinned to the troubled position in your program              |
-| 0.5.0   | real-time basic mistake warning                   | marks common (dumb) mistakes (like forgetting a semicolon/a closing bracket, using commas in a vector-definition, etc.) with a warning in real-time in your file as you type |
+| Version |             Feature              |                                                                             optional Description                                                                             |
+|---------|----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 0.4.0   | [+] build-system - error-parsing | get the parsed errors directly pinned to the troubled position in your program                                                                                               |
+| 0.5.0   | real-time basic mistake warning  | marks common (dumb) mistakes (like forgetting a semicolon/a closing bracket, using commas in a vector-definition, etc.) with a warning in real-time in your file as you type |
 
 
 *Feel free to suggest additional features by using GitHub-Issues.*
 
 
 
-### A Note on the Choosen License
+### A Note on the Chosen License
 This project is licensed under the terms of the *GNU General Public License v3.0*. For further information, please look [here](http://choosealicense.com/licenses/gpl-3.0/) or [here<sup>(DE)</sup>](http://www.gnu.org/licenses/gpl-3.0.de.html).
