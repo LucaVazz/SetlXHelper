@@ -319,6 +319,8 @@ repository:
     patterns:
     - name: keyword.control.defaultParam.setlx
       match: (\:\=)
+    - name: storage.type.modifier.setlx
+      match: (rw)
     - include: '$self'
     end: (\)\s*\{)
   call:

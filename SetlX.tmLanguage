@@ -898,6 +898,12 @@
 					<string>keyword.control.defaultParam.setlx</string>
 				</dict>
 				<dict>
+					<key>match</key>
+					<string>(rw)</string>
+					<key>name</key>
+					<string>storage.type.modifier.setlx</string>
+				</dict>
+				<dict>
 					<key>include</key>
 					<string>$self</string>
 				</dict>
