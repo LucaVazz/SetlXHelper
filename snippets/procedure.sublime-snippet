@@ -1,7 +1,6 @@
 <snippet>
     <content><![CDATA[procedure(${1:arguments}) {
 	${2:body}
-	${3://return value;}
 };]]></content>
     <tabTrigger>procedure</tabTrigger>
     <scope>source.setlx</scope>
