@@ -837,12 +837,6 @@
 					</array>
 				</dict>
 				<dict>
-					<key>match</key>
-					<string>((continue)|(break))</string>
-					<key>name</key>
-					<string>meta.abort.setlx keyword.control.setlx</string>
-				</dict>
-				<dict>
 					<key>include</key>
 					<string>$self</string>
 				</dict>
@@ -1018,7 +1012,7 @@
 		<key>iterator-marker</key>
 		<dict>
 			<key>match</key>
-			<string>(in)</string>
+			<string>(in( \s)+)</string>
 			<key>name</key>
 			<string>keyword.operator.setlx</string>
 		</dict>
@@ -1189,6 +1183,12 @@
 				<dict>
 					<key>include</key>
 					<string>#do-while</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>((continue)|(break))</string>
+					<key>name</key>
+					<string>meta.abort.setlx keyword.control.setlx</string>
 				</dict>
 			</array>
 		</dict>
@@ -1819,12 +1819,6 @@
 							<string>$self</string>
 						</dict>
 					</array>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>((continue)|(break))</string>
-					<key>name</key>
-					<string>meta.abort.setlx keyword.control.setlx</string>
 				</dict>
 				<dict>
 					<key>include</key>

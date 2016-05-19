@@ -100,6 +100,8 @@ repository:
     - include: '#for'
     - include: '#while'
     - include: '#do-while'
+    - name: meta.abort.setlx keyword.control.setlx
+      match: ((continue)|(break))
   for:
     name: meta.for.setlx
     begin: (for)
@@ -113,8 +115,6 @@ repository:
       - name: keyword.operator.setlx
         match: (\|)
       end: (\)\s*\{)
-    - name: meta.abort.setlx keyword.control.setlx
-      match: ((continue)|(break))
     - include: '$self'
     end: (\})
   while:
@@ -128,8 +128,6 @@ repository:
       patterns:
       - include: '$self'
       end: (\)\s*\{)
-    - name: meta.abort.setlx keyword.control.setlx
-      match: ((continue)|(break))
     - include: '$self'
     end: (\})
   do-while:
@@ -507,7 +505,7 @@ repository:
       - match: \,
   iterator-marker:        # a in x
     name: keyword.operator.setlx
-    match: (in)
+    match: (in( \s)+)
   range-sign:             # ..
     name: keyword.operator.setlx
     match: (\.\.)
