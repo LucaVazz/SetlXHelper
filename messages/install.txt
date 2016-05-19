@@ -1,0 +1,29 @@
+Thanks for installing the SetlX-Helper for Sublime Text. I'm sure you will enjoy working with it.
+
+
+To get you started, here are some tips on how to use its features:
+-> Syntax Definitions
+	Just type code and enjoy the highlighting.
+	Keep in mind: 
+		The colors don't come from the Helper-Plugin. You can choose them as you like by selecting a Color Scheme you like from the "Preferences" Menu of Sublime Text.
+	I recommend using the "Monokai Extended" Color Scheme for a nice and colorful syntax-highlighting (available via PAckage Control).
+
+-> Quickly Open the Quickreference
+	Open the Command Palette and select "SetlX Helper: Open the SetlX-Quickreference".
+	A new browser-window will open to display the Quickreference.
+
+-> Type Common Structures Faster With Snippets
+	To insert a snippet, just enter its keyword (which is its name, if not noted otherwise below) and press [Enter] to insert it. 
+	You can then jump through the placeholders by pressing [Tab] (and insert a real tab by pressing [Shift]+[Tab]).
+	Available snippets: 
+		definition of a set / list / closure / procedure / cached procedure
+		if -/else if -/else -/ match -/ switch - statements 
+		for -/ while - loops
+		try-catch - (keyword: catch) / trace - blocks
+		case -/ default - statements.
+
+-> Build System
+	(For now) you need to install SetlX as described in its manual. This means that you should be able to type "setlx" into a console-window and get the live interpreter fired up.
+	Make sure that "SetlX" is selected as "Build System" in the "Tools"-Menu when writing and testing a SetlX-Program.
+
+	After that, you can just press [Ctrl]/[Cmd]+[B] to start your SetlX-program and view its results inside Sublime Text own console (at the bottom of your window).

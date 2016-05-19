@@ -14,6 +14,7 @@ I'm fairly sure you are convinced now ;)
 2. Install Package Control in Sublime Text as described [here](https://packagecontrol.io/installation) and restart Sublime Text
 3. Open the Command Palette (by pressing <kbd>Ctrl</kbd>/<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>), select `Package Control: Install Package`, wait for the list to load and select `SetlX Helper` from the list
 4. After the installation is done (the progress is shown in the lower left corner) you are all set. Just open a SetlX-program file and enjoy the new help!
+5. *optional* I recommend using the *Monokai Extended* Color Scheme for a nice and colorful syntax-highlighting.
 
 
 
@@ -22,7 +23,6 @@ I'm fairly sure you are convinced now ;)
 Just type code ;)
 ![Illustration of the Syntax Definitions](screenshots/readme_syntax.PNG)
 *Keep in mind: The colors don't come from the Helper-Plugin. You can choose them as you like by selecting a Color Scheme you like from the* Preferences *Menu of Sublime Text.*
-I recommend using the *Monokai Extended* Color Scheme.
 
 
 #### Quickly Open the [Quickreference](https://github.com/LucaVazz/SetlXQuickreference/blob/master/SetlX-Quickreference.pdf)
@@ -48,8 +48,8 @@ After that, you can just press <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>B</kbd> to st
 ## Features to Come Soon / ToDo
 | Version |             Feature              |                                                                             optional Description                                                                             |
 |---------|----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 0.4.0   | [+] build-system - error-parsing | get the parsed errors directly pinned to the troubled position in your program                                                                                               |
-| 0.5.0   | real-time basic mistake warning  | marks common (dumb) mistakes (like forgetting a semicolon/a closing bracket, using commas in a vector-definition, etc.) with a warning in real-time in your file as you type |
+| 2.0.0   | [+] build-system - error-parsing | parse all errors from the interpreter's output and get them directly "pinned" to the troubled position in your program                                                       |
+| 3.0.0   | real-time basic mistake warning  | marks common (dumb) mistakes (like forgetting a semicolon/a closing bracket, using commas in a vector-definition, etc.) with a warning in real-time in your file as you type |
 
 
 *Feel free to suggest additional features by using GitHub-Issues.*
