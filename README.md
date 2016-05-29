@@ -39,20 +39,25 @@ To insert a snippet, just enter its keyword (which is its name, if not noted oth
 
 #### Build System
 (For now) you need to install SetlX as described in its manual. This means that you should be able to type `setlx` into a console-window and get the live interpreter fired up.
-Make sure that **SetlX** is selected as *Build System* in the *Tools*-Menu.
 
 After that, you can just press <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>B</kbd> to start your SetlX-program and view its results inside Sublie Text own console (at the bottom of your window).
 
+You can switch between running your program inside Sublime Text's own Build-Console (at the bottom of the window) (which doesn't support input) or in an external Command-Line - window by pressing [Ctrl]/[Cmd]+[Shift]+[B] and selecting either "SetlX - in internal Build-Console" or "SetlX - in external Command-Line".
+
+If you just press [Ctrl]/[Cmd]+[B] or just select "SetlX" in the selection-menu mentioned above, the previously selected option will be used.
 
 
-## Features to Come Soon / ToDo
+
+
+
+## Features to Come at Some Point in Time
 | Version |             Feature              |                                                                             optional Description                                                                             |
 |---------|----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 2.0.0   | [+] build-system - error-parsing | parse all errors from the interpreter's output and get them directly "pinned" to the troubled position in your program                                                       |
 | 3.0.0   | real-time basic mistake warning  | marks common (dumb) mistakes (like forgetting a semicolon/a closing bracket, using commas in a vector-definition, etc.) with a warning in real-time in your file as you type |
 
 
-*Feel free to suggest additional features by using GitHub-Issues.*
+*Feel free to suggest additional features or to report bugs by using GitHub-Issues.*
 
 
 

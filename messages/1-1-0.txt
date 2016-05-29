@@ -1,0 +1,6 @@
+NEW FUNCTION: Select where to run the program through the Build System:
+	You can now switch between running your program inside Sublime Text's own Build-Console (which doesn't support input) or in an external Command-Line - window.
+	To change your selection, just press [Ctrl]/[Cmd]+[Shift]+[B] and select either "SetlX - in internal Build-Console" or "SetlX - in external Command-Line".
+	If you just press [Ctrl]/[Cmd]+[B] or just select "SetlX" in the selection-menu mentioned above, the previously selected option will be used.
+
+BUG FIXES:  - fixed some minor problems in the syntax-definition

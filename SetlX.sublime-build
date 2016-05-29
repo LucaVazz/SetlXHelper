@@ -1,7 +1,20 @@
 {
-	"cmd": ["setlx", "$file"],
 	"selector": "source.setlx",
-    "windows": {
-        "cmd": ["setlx.cmd", "$file"]
-    }
+	"shell": true,
+    "variants": [
+    	{
+    		"name": "in internal Build-Console (no input possible)",
+			"cmd": ["setlx", "$file"],
+		    "windows": {
+		        "cmd": ["setlx.cmd", "$file"]
+		    },
+    	},
+    	{
+	    	"name": "in external Command-Line",
+	    	"cmd": ["start", "setlx", "$file"],
+	    	"windows": {
+	    		"cmd": ["start", "setlx.cmd", "$file"]
+	    	}
+		}
+	]
 }
