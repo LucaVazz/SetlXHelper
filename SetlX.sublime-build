@@ -15,6 +15,13 @@
 	    	"windows": {
 	    		"cmd": ["start", "setlx.cmd", "$file"]
 	    	}
+		},
+		{
+	    	"name": "in external Command-Line, printing out all internal stack traces in full detail",
+	    	"cmd": ["start", "setlx", "--runtimeDebugging", "$file"],
+	    	"windows": {
+	    		"cmd": ["start", "setlx.cmd", "--runtimeDebugging", "$file"]
+	    	}
 		}
 	]
 }
