@@ -1,27 +1,27 @@
 {
 	"selector": "source.setlx",
 	"shell": true,
-    "variants": [
-    	{
-    		"name": "in internal Build-Console (no input possible)",
+	"variants": [
+		{
+			"name": "in internal Build-Console (no input possible)",
 			"cmd": ["setlx", "$file"],
-		    "windows": {
-		        "cmd": ["setlx.cmd", "$file"]
-		    },
-    	},
-    	{
-	    	"name": "in external Command-Line",
-	    	"cmd": ["start", "setlx", "$file"],
-	    	"windows": {
-	    		"cmd": ["start", "setlx.cmd", "$file"]
-	    	}
+			"windows": {
+				"cmd": ["setlx.cmd", "$file"]
+			}
 		},
 		{
-	    	"name": "in external Command-Line, printing out all internal stack traces in full detail",
-	    	"cmd": ["start", "setlx", "--runtimeDebugging", "$file"],
-	    	"windows": {
-	    		"cmd": ["start", "setlx.cmd", "--runtimeDebugging", "$file"]
-	    	}
+			"name": "in external Command-Line",
+			"cmd": ["start", "setlx", "$file"],
+			"windows": {
+				"cmd": ["start", "setlx.cmd", "$file"]
+			}
+		},
+		{
+			"name": "in external Command-Line, printing out all internal stack traces in full detail",
+			"cmd": ["start", "setlx", "--runtimeDebugging", "$file"],
+			"windows": {
+				"cmd": ["start", "setlx.cmd", "--runtimeDebugging", "$file"]
+			}
 		}
 	]
 }
