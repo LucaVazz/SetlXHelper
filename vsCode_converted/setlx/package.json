@@ -1,0 +1,33 @@
+{
+    "name": "setlx",
+    "displayName": "SetlXHelper",
+    "description": "1. Programming [with the] SetlX[-Helper] is the only way to guarantee redemption from the eternal hell fire that awaits those [...] programming in SetlX.   2. Programming in SetlX [will then be] fun!",
+    "version": "1.1.1",
+    "publisher": "LucaVazz",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": [
+        "Languages",
+        "Snippets"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "setlx",
+            "aliases": ["SetlX", "setlx"],
+            "extensions": [".stlx",".setlx"],
+            "configuration": "./setlx.configuration.json"
+        }],
+        "grammars": [{
+            "language": "setlx",
+            "scopeName": "source.setlx",
+            "path": "./syntaxes/setlx.tmLanguage"
+        }],
+        "snippets": [
+            {
+                "language": "setlx",
+                "path": "./snippets/snippets.json"
+            }
+        ]
+    }
+}

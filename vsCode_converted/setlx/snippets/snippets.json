@@ -1,0 +1,98 @@
+{
+	"cachedProcedure": {
+		"prefix": "cachedProcedure",
+		"body": "cachedProcedure(${1:arguments}) {\r\n\t${2:body}\r\n};",
+		"description": "   definition of a cached procedure",
+		"scope": "source.setlx"
+	},
+	"case": {
+		"prefix": "case",
+		"body": "case ${1:pattern}: ${2:body};",
+		"description": "   case - block",
+		"scope": "source.setlx"
+	},
+	"catch": {
+		"prefix": "catch",
+		"body": "try {\r\n    ${1:body}\r\n} catch${2:} (${3:e}) {\r\n\t${4:handler}\r\n}\r\n",
+		"description": "   try-catch - block",
+		"scope": "source.setlx"
+	},
+	"closure": {
+		"prefix": "closure",
+		"body": "closure(${1:arguments}) {\r\n\t${2:body}\r\n};",
+		"description": "   definition of a closure",
+		"scope": "source.setlx"
+	},
+	"default": {
+		"prefix": "default",
+		"body": "default: ${1:body};",
+		"description": "   default-case - block",
+		"scope": "source.setlx"
+	},
+	"else if": {
+		"prefix": "else if",
+		"body": "else if(${1:test}) {\r\n    ${2:body}\r\n}",
+		"description": "   else-if - statement",
+		"scope": "source.setlx"
+	},
+	"else": {
+		"prefix": "else",
+		"body": "else {\r\n    ${1:body}\r\n}",
+		"description": "   else - statement",
+		"scope": "source.setlx"
+	},
+	"for": {
+		"prefix": "for",
+		"body": "for(${1:i} in ${2:m}) {\r\n    ${3:body}\r\n}",
+		"description": "   for - loop",
+		"scope": "source.setlx"
+	},
+	"if": {
+		"prefix": "if",
+		"body": "if(${1:test}) {\r\n    ${2:body}\r\n}",
+		"description": "   if - statement",
+		"scope": "source.setlx"
+	},
+	"list": {
+		"prefix": "list",
+		"body": "[ ${1:definition}\r\n  : ${2:ranges}\r\n  | ${3:condition} ]",
+		"description": "   definition of a list",
+		"scope": "source.setlx"
+	},
+	"match": {
+		"prefix": "match",
+		"body": "match(${1:Term}) {\r\n    ${0:}\r\n}",
+		"description": "   matching - block",
+		"scope": "source.setlx"
+	},
+	"procedure": {
+		"prefix": "procedure",
+		"body": "procedure(${1:arguments}) {\r\n\t${2:body}\r\n};",
+		"description": "   definition of a procedure",
+		"scope": "source.setlx"
+	},
+	"set": {
+		"prefix": "set",
+		"body": "{ ${1:definition}\r\n  : ${2:ranges}\r\n  | ${3:condition} }",
+		"description": "   definition of a set",
+		"scope": "source.setlx"
+	},
+	"switch": {
+		"prefix": "switch",
+		"body": "switch {\r\n    ${0:}\r\n}",
+		"description": "   switch - block",
+		"scope": "source.setlx"
+	},
+	"trace": {
+		"prefix": "trace",
+		"body": "trace(true);\r\n${1:expressions}\r\ntrace(false);\r\n${0:}",
+		"description": "   trace - block",
+		"scope": "source.setlx"
+	},
+	"while": {
+		"prefix": "while",
+		"body": "while(${1:test}) {\r\n    ${2:body}\r\n}",
+		"description": "   while - loop",
+		"scope": "source.setlx"
+	}
+}
