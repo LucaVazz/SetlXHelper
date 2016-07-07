@@ -1,0 +1,2 @@
+BUG FIXES:
+	- small fix in the syntax highlighting of try-catch

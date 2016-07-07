@@ -168,7 +168,7 @@ repository:
     end: (\})
   catch:
     name: meta.catch.setlx
-    begin: ((catch)|(catchLng)|(catchUsr))
+    begin: ((catchLng)|(catchUsr)|(catch))
     beginCaptures:
       '1': {name: keyword.control.setlx}
     patterns:

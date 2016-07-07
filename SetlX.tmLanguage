@@ -454,7 +454,7 @@
 		<key>catch</key>
 		<dict>
 			<key>begin</key>
-			<string>((catch)|(catchLng)|(catchUsr))</string>
+			<string>((catchLng)|(catchUsr)|(catch))</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
