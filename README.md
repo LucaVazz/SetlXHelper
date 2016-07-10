@@ -9,57 +9,69 @@ I'm fairly sure you are convinced now ;)
 
 
 ## Installing It
-#### Sublime Text 3 / 2
-1. [Download](https://www.sublimetext.com/3) and install Sublime Text 3
-2. Install Package Control in Sublime Text as described [here](https://packagecontrol.io/installation) and restart Sublime Text
-3. Open the Command Palette (by pressing <kbd>Ctrl</kbd>/<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>), select `Package Control: Install Package`, wait for the list to load and select `SetlX Helper` from the list
-4. After the installation is done (the progress is shown in the lower left corner) you are all set. Just open a SetlX-program file and enjoy the new help!
-5. *optional* I recommend using the *Monokai Extended* Color Scheme for a nice and colorful syntax-highlighting.
+#### Sublime Text 3 / 2   <img src="images/st.png" alt="[ST]" height="17">
+1. Install PackageControl in Sublime Text as described [here](https://packagecontrol.io/installation) and restart Sublime Text
+2. Open the Command Palette (by pressing <kbd>Ctrl</kbd>/<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>), select `Package Control: Install Package`, wait for the list to load and select `SetlX Helper` from the list (by typing in `setlx` and pressing <kbd>Enter</kbd>)
+3. After the installation is done (the progress is shown in the lower left corner) you are all set. Just open a SetlX-program file and enjoy the new help!
+4. *optional* I recommend using the *Monokai Extended* Color Scheme (available via PackageControl) for a nice and colorful syntax-highlighting.
 
+
+#### VisualStudio Code   <img src="images/vsc.png" alt="[VSC]" height="17">
+1. Open the Command Palette (by pressing <kbd>Ctrl</kbd>+<kbd>P</kbd>), type in `ext install setlx` and press <kbd>Enter</kbd>
+2. After the installation is done, restart VS Code when the prompt asking you to do it appears. Then you are all set. Just open a SetlX-program file and enjoy the new help!
+3. *optional* I recommend using the *Monokai* Color Theme for a nice and colorful syntax-highlighting.
 
 
 ## Using the Features
-#### Syntax Definitions
+*The icons in brackets indicate for which editor the feature is implemented.*
+
+#### Syntax Highligting   <sup>(<img src="images/st.png" alt="[ST]" height="10"> <img src="images/vsc.png" alt="[VSC]" height="10">)</sup>
+<img src="images/readme_syntax.PNG" alt="[Illustration of the Syntax Definitions]" width="420" align="right">
+
 Just type code ;)
-![Illustration of the Syntax Definitions](screenshots/readme_syntax.PNG)
-*Keep in mind: The colors don't come from the Helper-Plugin. You can choose them as you like by selecting a Color Scheme you like from the* Preferences *Menu of Sublime Text.*
+
+*Keep in mind:* The colors don't come from the Helper-Plugin. You can choose them as you like by selecting a Theme you like: 
+* <img src="images/st.png" alt="[ST]" height="17"> : *Preferences* ➜ *Color Scxheme*
+* <img src="images/vsc.png" alt="[VSC]" height="17"> : *File* ➜ *Settings* ➜ *Color Theme*
 
 
-#### Quickly Open the [Quickreference](https://github.com/LucaVazz/SetlXQuickreference/blob/master/SetlX-Quickreference.pdf)
-Open the Command Palette (see above) and select `SetlX Helper: Open the SetlX-Quickreference`.
-A new browser-window will open to display the Quickreference.
+#### Type Common Structures Faster With Snippets   <sup>(<img src="images/st.png" alt="[ST]" height="10"> <img src="images/vsc.png" alt="[VSC]" height="10">)</sup>
+<img src="images/readme_snippets.GIF" alt="[Demonstration of Developing with Snippets]" width="420" align="right">
+
+To insert a snippet, just enter its keyword (which is its name, if not noted otherwise below) and press <kbd>Enter</kbd> to insert it. You can then jump through the placeholders by pressing <kbd>Tab</kbd> (<img src="images/st.png" alt="[ST]" height="17"> : and insert a "real" tab by pressing <kbd>Shift</kbd>+<kbd>Tab</kbd>).
+
+*Available snippets:* 
++ `set` - / `list` - / `closure` - / `procedure` - / `cached procedure` - definition
++ `if` - / `else if` - / `else`- / `match` - / `swtich`- / `case` - / `default` - statements
++ `for` - / `while` - loops
++ try-catch - (keyword: `catch`) / `trace` - blocks
 
 
-#### Type Common Structures Faster With Snippets
-To insert a snippet, just enter its keyword (which is its name, if not noted otherwise below) and press <kbd>Enter</kbd> to insert it. You can then jump through the placeholders by pressing <kbd>Tab</kbd> (and insert a "real" tab by pressing <kbd>Shift</kbd>+<kbd>Tab</kbd>).
-![Demonstration of Developing with Snippets](screenshots/readme_snippets.GIF)
+#### Build System   <sup>(<img src="images/st.png" alt="[ST]" height="10">)</sup>
+You need to install SetlX *completely* as described in its [manual](http://randoom.org/Software/SetlX). This means that you should be able to type `setlx` into a console-window and get the live interpreter fired up.
 
-**Available snippets:** definition of a `set` / `list` / `closure` / `procedure` / `cached procedure`, `if`-/`else if`-/`else`- / `match` - / `swtich` - statements, `for` - / `while` - loops, try-catch - (keyword: `catch`) / `trace` - blocks, `case` - / `default` - statements.
+After that, you can just press <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>B</kbd> to start your SetlX-program and view its results inside Sublime Text's own console (at the bottom of your window).
 
+You can switch between running your program inside Sublime Text's own Build-Console (at the bottom of the window) (which doesn't support input) or in an external Command-Line - window by pressing <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd> and selecting either `SetlX - in internal Build-Console` or `SetlX - in external Command-Line`.
 
-#### Build System
-(For now) you need to install SetlX as described in its manual. This means that you should be able to type `setlx` into a console-window and get the live interpreter fired up.
-
-After that, you can just press <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>B</kbd> to start your SetlX-program and view its results inside Sublie Text own console (at the bottom of your window).
-
-You can switch between running your program inside Sublime Text's own Build-Console (at the bottom of the window) (which doesn't support input) or in an external Command-Line - window by pressing [Ctrl]/[Cmd]+[Shift]+[B] and selecting either "SetlX - in internal Build-Console" or "SetlX - in external Command-Line".
-
-If you just press [Ctrl]/[Cmd]+[B] or just select "SetlX" in the selection-menu mentioned above, the previously selected option will be used.
-
-
-
-
-
-## Features to Come at Some Point in Time
-| Version |             Feature              |                                                                             optional Description                                                                             |
-|---------|----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 2.0.0   | [+] build-system - error-parsing | parse all errors from the interpreter's output and get them directly "pinned" to the troubled position in your program                                                       |
-| 3.0.0   | real-time basic mistake warning  | marks common (dumb) mistakes (like forgetting a semicolon/a closing bracket, using commas in a vector-definition, etc.) with a warning in real-time in your file as you type |
-
-
-*Feel free to suggest additional features or to report bugs by using GitHub-Issues.*
+If you just press <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>B</kbd> or just select `SetlX` in the selection-menu mentioned above, the previously selected option will be used.
 
 
 
-### A Note on the Chosen License
+## Contributing
+Feel free to suggest *additional features* or to *report bugs* by using [GitHub-Issues](https://github.com/LucaVazz/SetlXHelper/issues).
+
+I'm also always pleased to see *pull-request*, for example if you have ported the extension to other editors.
+
+
+
+## A Note on the Chosen License
 This project is licensed under the terms of the *GNU General Public License v3.0*. For further information, please look [here](http://choosealicense.com/licenses/gpl-3.0/) or [here<sup>(DE)</sup>](http://www.gnu.org/licenses/gpl-3.0.de.html).
+
+
+---
+
+
+### A Note on Used Material
+* The syntax highlighting is (obviously) based on the [SetlX Grammar](https://github.com/herrmanntom/setlX/blob/master/interpreter/core/src/main/antlr/SetlXgrammar.g).
+* The icons in this readme are taken from the [TypeScript Homepage](https://www.typescriptlang.org/index.html#download-links).
