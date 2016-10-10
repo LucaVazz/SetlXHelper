@@ -1,6 +1,0 @@
-<snippet>
-    <content><![CDATA[default: ${1:body};]]></content>
-    <tabTrigger>default</tabTrigger>
-    <scope>source.setlx</scope>
-    <description>   default-case - block</description>
-</snippet>

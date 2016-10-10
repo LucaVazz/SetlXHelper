@@ -1,8 +1,0 @@
-<snippet>
-    <content><![CDATA[closure(${1:arguments}) {
-	${2:body}
-};]]></content>
-    <tabTrigger>closure</tabTrigger>
-    <scope>source.setlx</scope>
-    <description>   definition of a closure</description>
-</snippet>

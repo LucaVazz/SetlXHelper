@@ -1,2 +1,0 @@
-NEW FUNCTIONS: 
-	- Added the Build-System "in external Command-Line, printing out all internal stack traces in full detail", which does just that to ease some specific debugging cases.
