@@ -1,0 +1,4 @@
+FIXES:
+	- the syntax definition for Terms was adapted to the changes made in SetlX v2.5.0
+	- some parts of the syntax definition were moved around and reorganized to hopefully provide a more reliable system
+	- removed the directory for the VS Code-Version of this extension out of the master branch to avoid interference
