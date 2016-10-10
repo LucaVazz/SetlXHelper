@@ -12,3 +12,4 @@ I'm fairly sure you are convinced now ;)
 This extension includes a syntax highlighter and a library of snippets to ease the development of SetlX-programs.
 
 For more information, please visit the [GitHub-Repository](https://github.com/LucaVazz/SetlXHelper/blob/master/README.md), where you obviously can also find the source code and can contribute to it.
+The SemVer-Number of this Extension is always kept in sync with the SublimeText-Extension living in the master-branch there.

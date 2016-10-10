@@ -21,17 +21,11 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#values</string>
-		</dict>
-		<dict>
-			<key>include</key>
 			<string>#keywords</string>
 		</dict>
 		<dict>
-			<key>match</key>
-			<string>([a-z]\w*)</string>
-			<key>name</key>
-			<string>meta.variable.setlx</string>
+			<key>include</key>
+			<string>#values</string>
 		</dict>
 	</array>
 	<key>repository</key>
@@ -102,7 +96,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(:=)</string>
+					<string>(\:\=)</string>
 					<key>name</key>
 					<string>keyword.operator.assigment.direct.setlx</string>
 				</dict>
@@ -172,10 +166,6 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#atomic-functionSymbol-capital</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#atomic-functionSymbol-escaped</string>
 				</dict>
 				<dict>
@@ -184,32 +174,23 @@
 				</dict>
 			</array>
 		</dict>
-		<key>atomic-functionSymbol-capital</key>
-		<dict>
-			<key>comment</key>
-			<string>atomic value, functionSymbol for a term, written with an initial capital letter</string>
-			<key>match</key>
-			<string>([A-Z])([a-zA-Z0-9]|_)*</string>
-			<key>name</key>
-			<string>entity.functionSymbol.setlx</string>
-		</dict>
 		<key>atomic-functionSymbol-escaped</key>
 		<dict>
 			<key>comment</key>
-			<string>atomic value, functionSymbol for a term, written with an initial @ as escape-character</string>
+			<string>atomic value, functionSymbol for a term, used by the user to define a custom Term</string>
 			<key>match</key>
-			<string>((@)([a-z]))([a-zA-Z0-9]|_)*</string>
+			<string>((@[a-zA-Z])([a-zA-Z0-9]|_)+)</string>
 			<key>name</key>
-			<string>entity.functionSymbol.setlx</string>
+			<string>entity.functionSymbol.escaped.setlx</string>
 		</dict>
 		<key>atomic-functionSymbol-internal</key>
 		<dict>
 			<key>comment</key>
 			<string>atomic value, functionSymbol for a term, used internally for definitions</string>
 			<key>match</key>
-			<string>(\^)([a-zA-Z0-9]|_)*</string>
+			<string>((@@@[a-zA-Z])([a-zA-Z0-9]|_)+)</string>
 			<key>name</key>
-			<string>entity.functionSymbol.setlx</string>
+			<string>entity.functionSymbol.internal.setlx</string>
 		</dict>
 		<key>atomic-int</key>
 		<dict>
@@ -351,6 +332,13 @@
 			<key>name</key>
 			<string>constant.language.setlx</string>
 		</dict>
+		<key>atomic-variable-name</key>
+		<dict>
+			<key>match</key>
+			<string>(([a-zA-Z])([a-zA-Z0-9]|_)+)</string>
+			<key>name</key>
+			<string>meta.variable.setlx</string>
+		</dict>
 		<key>atomics</key>
 		<dict>
 			<key>comment</key>
@@ -366,6 +354,10 @@
 				<dict>
 					<key>include</key>
 					<string>#atomic-functionSymbol</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#atomic-variable-name</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -800,7 +792,7 @@
 		<key>for</key>
 		<dict>
 			<key>begin</key>
-			<string>(for)</string>
+			<string>(for )</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -824,10 +816,6 @@
 					<string>meta.for.iterators.setlx</string>
 					<key>patterns</key>
 					<array>
-						<dict>
-							<key>include</key>
-							<string>#iterator-chain</string>
-						</dict>
 						<dict>
 							<key>match</key>
 							<string>(\|)</string>
@@ -924,10 +912,6 @@
 							<key>name</key>
 							<string>keyword.operator.setlx</string>
 						</dict>
-						<dict>
-							<key>include</key>
-							<string>#iterator-chain</string>
-						</dict>
 					</array>
 				</dict>
 				<dict>
@@ -940,10 +924,6 @@
 							<string>(\|)</string>
 							<key>name</key>
 							<string>keyword.operator.setlx</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#iterator-chain</string>
 						</dict>
 					</array>
 				</dict>
@@ -992,29 +972,6 @@
 					<string>$self</string>
 				</dict>
 			</array>
-		</dict>
-		<key>iterator-chain</key>
-		<dict>
-			<key>name</key>
-			<string>meta.iteratorchain.setlx</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#iterator-marker</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\,</string>
-				</dict>
-			</array>
-		</dict>
-		<key>iterator-marker</key>
-		<dict>
-			<key>match</key>
-			<string>(in( \s)+)</string>
-			<key>name</key>
-			<string>keyword.operator.setlx</string>
 		</dict>
 		<key>keywords</key>
 		<dict>
@@ -1195,7 +1152,7 @@
 		<key>match</key>
 		<dict>
 			<key>begin</key>
-			<string>(match)</string>
+			<string>(match)(\s*\(.*\))\s*(\{)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1210,21 +1167,6 @@
 			<string>meta.match.setlx</string>
 			<key>patterns</key>
 			<array>
-				<dict>
-					<key>begin</key>
-					<string>(\()</string>
-					<key>end</key>
-					<string>(\)\s*\{)</string>
-					<key>name</key>
-					<string>meta.match.expression.setlx</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>$self</string>
-						</dict>
-					</array>
-				</dict>
 				<dict>
 					<key>begin</key>
 					<string>(case)</string>
@@ -1251,6 +1193,10 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>include</key>
+							<string>$self</string>
+						</dict>
+						<dict>
 							<key>match</key>
 							<string>(\|)</string>
 							<key>name</key>
@@ -1264,7 +1210,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(default\s*\:)</string>
+					<string>((default)(\s)*(\:))</string>
 					<key>name</key>
 					<string>keyword.control.setlx</string>
 				</dict>
@@ -1335,12 +1281,6 @@
 					<key>name</key>
 					<string>keyword.operator.prefix.setlx</string>
 				</dict>
-				<dict>
-					<key>match</key>
-					<string>(\@)</string>
-					<key>name</key>
-					<string>keyword.operator.prefix.setlx</string>
-				</dict>
 			</array>
 		</dict>
 		<key>procedure</key>
@@ -1383,7 +1323,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(/)</string>
+					<string>(/)(?!/|\*)</string>
 					<key>name</key>
 					<string>keyword.operator.product.setlx</string>
 				</dict>
