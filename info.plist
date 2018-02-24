@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>contactEmailRot13</key>
+	<string></string>
+	<key>contactName</key>
+	<string>Vazzano, Luca</string>
+	<key>description</key>
+	<string>An extension to make writing SetlX-code comfortable. Compatible with SetlX Version 2.5.0 - 2.6.1</string>
+	<key>name</key>
+	<string>SetlX</string>
+	<key>uuid</key>
+	<string>08F021D6-7818-5779-AAC2-3A52E1E52422</string>
+</dict>
+</plist>

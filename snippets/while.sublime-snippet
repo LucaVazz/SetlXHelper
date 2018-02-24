@@ -1,8 +1,0 @@
-<snippet>
-    <content><![CDATA[while(${1:test}) {
-    ${2:body}
-}]]></content>
-    <tabTrigger>while</tabTrigger>
-    <scope>source.setlx</scope>
-    <description>   while - loop</description>
-</snippet>

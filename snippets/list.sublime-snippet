@@ -1,8 +1,0 @@
-<snippet>
-    <content><![CDATA[[ ${1:definition}
-  : ${2:ranges}
-  | ${3:condition} ]]]></content>
-    <tabTrigger>list</tabTrigger>
-    <scope>source.setlx</scope>
-    <description>   definition of a list</description>
-</snippet>

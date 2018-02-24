@@ -1,8 +1,0 @@
-<snippet>
-    <content><![CDATA[procedure(${1:arguments}) {
-	${2:body}
-};]]></content>
-    <tabTrigger>procedure</tabTrigger>
-    <scope>source.setlx</scope>
-    <description>   definition of a procedure</description>
-</snippet>

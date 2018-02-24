@@ -1,6 +1,0 @@
-<snippet>
-    <content><![CDATA[case ${1:pattern}: ${2:body};]]></content>
-    <tabTrigger>case</tabTrigger>
-    <scope>source.setlx</scope>
-    <description>   case - block</description>
-</snippet>

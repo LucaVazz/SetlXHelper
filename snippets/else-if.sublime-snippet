@@ -1,8 +1,0 @@
-<snippet>
-    <content><![CDATA[else if(${1:test}) {
-    ${2:body}
-}]]></content>
-    <tabTrigger>else if</tabTrigger>
-    <scope>source.setlx</scope>
-    <description>   else-if - statement</description>
-</snippet>
