@@ -154,7 +154,7 @@
 			<key>comment</key>
 			<string>atomic value, false</string>
 			<key>match</key>
-			<string>(false)</string>
+			<string>\b(false)\b</string>
 			<key>name</key>
 			<string>constant.language.setlx</string>
 		</dict>
@@ -277,7 +277,7 @@
 			<key>comment</key>
 			<string>atomic value, om</string>
 			<key>match</key>
-			<string>(om)</string>
+			<string>\b(om)\b</string>
 			<key>name</key>
 			<string>constant.language.setlx</string>
 		</dict>
@@ -328,7 +328,7 @@
 			<key>comment</key>
 			<string>atomic value, true</string>
 			<key>match</key>
-			<string>(true)</string>
+			<string>\b(true)\b</string>
 			<key>name</key>
 			<string>constant.language.setlx</string>
 		</dict>
@@ -402,7 +402,7 @@
 		<key>cached-procedure</key>
 		<dict>
 			<key>begin</key>
-			<string>(cachedProcedure)</string>
+			<string>\b(cachedProcedure)\b</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -446,7 +446,7 @@
 		<key>catch</key>
 		<dict>
 			<key>begin</key>
-			<string>((catchLng)|(catchUsr)|(catch))</string>
+			<string>\b((catchLng)|(catchUsr)|(catch))\b</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -502,7 +502,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>(backtrack)</string>
+					<string>\b(backtrack)\b</string>
 					<key>name</key>
 					<string>meta.check.backtrackcall.setlx keyword.control.setlx</string>
 				</dict>
@@ -529,7 +529,7 @@
 		<key>class</key>
 		<dict>
 			<key>begin</key>
-			<string>(class)(\s+)([a-z]\w*)</string>
+			<string>\b(class)\b(\s+)([a-z]\w*)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -566,7 +566,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(static)(\s*\{)</string>
+					<string>\b(static)\b(\s*\{)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -596,7 +596,7 @@
 		<key>closure</key>
 		<dict>
 			<key>begin</key>
-			<string>(closure)</string>
+			<string>\b(closure)\b</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -681,13 +681,13 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(notin)</string>
+					<string>\b(notin)\b</string>
 					<key>name</key>
 					<string>keyword.operator.comparison.setlx</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(in)</string>
+					<string>\b(in)\b</string>
 					<key>name</key>
 					<string>keyword.operator.comparison.setlx</string>
 				</dict>
@@ -696,7 +696,7 @@
 		<key>do-while</key>
 		<dict>
 			<key>begin</key>
-			<string>(do)(\s*)(\{)</string>
+			<string>\b(do)\b(\s*)(\{)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -743,7 +743,7 @@
 		<key>else-block</key>
 		<dict>
 			<key>begin</key>
-			<string>(else)(\s*\{)</string>
+			<string>\b(else)\b(\s*\{)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -785,14 +785,14 @@
 		<key>exists</key>
 		<dict>
 			<key>match</key>
-			<string>(exists)</string>
+			<string>\b(exists)\b</string>
 			<key>name</key>
 			<string>keyword.operator.setlx</string>
 		</dict>
 		<key>for</key>
 		<dict>
 			<key>begin</key>
-			<string>(for )</string>
+			<string>\b(for)\b</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -817,10 +817,8 @@
 					<key>patterns</key>
 					<array>
 						<dict>
-							<key>match</key>
-							<string>(\|)</string>
-							<key>name</key>
-							<string>keyword.operator.setlx</string>
+							<key>include</key>
+							<string>$self</string>
 						</dict>
 					</array>
 				</dict>
@@ -833,7 +831,7 @@
 		<key>forall</key>
 		<dict>
 			<key>match</key>
-			<string>(forall)</string>
+			<string>\b(forall)\b</string>
 			<key>name</key>
 			<string>keyword.operator.setlx</string>
 		</dict>
@@ -898,10 +896,6 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>include</key>
-					<string>$self</string>
-				</dict>
-				<dict>
 					<key>name</key>
 					<string>meta.collection.ranges.setlx</string>
 					<key>patterns</key>
@@ -932,7 +926,7 @@
 		<key>if</key>
 		<dict>
 			<key>begin</key>
-			<string>(else\s+)?(if)</string>
+			<string>(\belse\s+)?\b(if)\b</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1047,11 +1041,7 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#setl-matrix</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#setl-vector</string>
+					<string>#setl-matrix-vector</string>
 				</dict>
 			</array>
 		</dict>
@@ -1083,16 +1073,34 @@
 					<key>include</key>
 					<string>#general-collection</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
 			</array>
 		</dict>
 		<key>list-access</key>
 		<dict>
 			<key>begin</key>
-			<string>((\w|\]))(\[)</string>
+			<string>([a-zA-Z0-9\_\]]+)(\[)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>meta.list.access.setlx</string>
+				</dict>
+			</dict>
 			<key>end</key>
 			<string>(\])</string>
-			<key>name</key>
-			<string>meta.list.access.setlx</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>meta.list.access.setlx</string>
+				</dict>
+			</dict>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -1143,7 +1151,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>((continue)|(break))</string>
+					<string>\b((continue)|(break))\b</string>
 					<key>name</key>
 					<string>meta.abort.setlx keyword.control.setlx</string>
 				</dict>
@@ -1169,7 +1177,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(case)</string>
+					<string>\b(case)\b</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1286,7 +1294,7 @@
 		<key>procedure</key>
 		<dict>
 			<key>begin</key>
-			<string>(procedure)</string>
+			<string>\b(procedure)\b</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1362,7 +1370,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>(regex)</string>
+					<string>\b(regex)\b</string>
 					<key>name</key>
 					<string>keyword.control.setlx</string>
 				</dict>
@@ -1392,7 +1400,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(as)</string>
+					<string>\b(as)\b</string>
 					<key>name</key>
 					<string>keyword.control.setlx</string>
 				</dict>
@@ -1413,7 +1421,7 @@
 		<key>scan</key>
 		<dict>
 			<key>begin</key>
-			<string>(scan)</string>
+			<string>\b(scan)\b</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1495,9 +1503,13 @@
 					<key>include</key>
 					<string>#general-collection</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
 			</array>
 		</dict>
-		<key>setl-matrix</key>
+		<key>setl-matrix-vector</key>
 		<dict>
 			<key>begin</key>
 			<string>(&lt;&lt;)</string>
@@ -1506,7 +1518,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.enclosing.matrix.setlx</string>
+					<string>entity.enclosing.matrix-vector.setlx</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1516,52 +1528,14 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.enclosing.matrix.setlx</string>
+					<string>entity.enclosing.matrix-vector.setlx</string>
 				</dict>
 			</dict>
-			<key>name</key>
-			<string>meta.matrix.setlx</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>include</key>
 					<string>$self</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>meta.matrix.setlx</string>
-				</dict>
-			</array>
-		</dict>
-		<key>setl-vector</key>
-		<dict>
-			<key>begin</key>
-			<string>(&lt;&lt;)</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>entity.enclosing.vector.setlx</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>(\&gt;\&gt;)</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>entity.enclosing.vector.setlx</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>meta.vector.setlx</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#atomic-number</string>
 				</dict>
 			</array>
 		</dict>
@@ -1606,7 +1580,7 @@
 		<key>switch</key>
 		<dict>
 			<key>begin</key>
-			<string>(switch)(\s*\{)</string>
+			<string>\b(switch)\b(\s*\{)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1623,7 +1597,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(case)</string>
+					<string>\b(case)\b</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1646,7 +1620,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(default\s*\:)</string>
+					<string>\b(default\s*\:)\b</string>
 					<key>name</key>
 					<string>keyword.control.setlx</string>
 				</dict>
@@ -1659,7 +1633,7 @@
 		<key>throw</key>
 		<dict>
 			<key>match</key>
-			<string>(throw)</string>
+			<string>\b(throw)\b</string>
 			<key>name</key>
 			<string>keyword.control.setlx</string>
 		</dict>
@@ -1730,7 +1704,7 @@
 		<key>while</key>
 		<dict>
 			<key>begin</key>
-			<string>(while)</string>
+			<string>\b(while)\b</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>

@@ -28,7 +28,7 @@ repository:
 
   class:
     name: meta.class.setlx
-    begin: (class)(\s+)([a-z]\w*)
+    begin: \b(class)\b(\s+)([a-z]\w*)
     beginCaptures:
       '1': {name: keyword.other.setlx}
       '3': {name: entity.class.name.setlx}
@@ -39,7 +39,7 @@ repository:
       - include: '$self'
       end: (\)\s*\{)
     - name: meta.class.staticMembers.setlx
-      begin: (static)(\s*\{)
+      begin: \b(static)\b(\s*\{)
       beginCaptures:
         '1': {name: keyword.other.setlx}
       patterns:
@@ -55,7 +55,7 @@ repository:
     - include: '#switch'
   if: 
     name: meta.if.setlx
-    begin: (else\s+)?(if)
+    begin: (\belse\s+)?\b(if)\b
     beginCaptures:
       '1': {name: keyword.control.setlx}
       '2': {name: keyword.control.setlx}
@@ -69,7 +69,7 @@ repository:
     end: (\})
   else-block:
     name: meta.elseBlock.setlx
-    begin: (else)(\s*\{)
+    begin: \b(else)\b(\s*\{)
     beginCaptures:
       '1': {name: keyword.control.setlx}
     patterns:
@@ -77,19 +77,19 @@ repository:
     end: (\})
   switch:
     name: meta.switch.setlx
-    begin: (switch)(\s*\{)
+    begin: \b(switch)\b(\s*\{)
     beginCaptures:
       '1': {name: keyword.control.setlx}
     patterns:
     - name: meta.switch.case.setlx
-      begin: (case)
+      begin: \b(case)\b
       beginCaptures:
         '1': {name: keyword.control.setlx}
       patterns:
       - include: '$self'
       end: (\:)
     - name: keyword.control.setlx
-      match: (default\s*\:)
+      match: \b(default\s*\:)\b
     - include: '$self'
     end: (\})
 
@@ -99,24 +99,23 @@ repository:
     - include: '#while'
     - include: '#do-while'
     - name: meta.abort.setlx keyword.control.setlx
-      match: ((continue)|(break))
+      match: \b((continue)|(break))\b
   for:
     name: meta.for.setlx
-    begin: (for )
+    begin: \b(for)\b
     beginCaptures:
       '1': {name: keyword.control.setlx}
     patterns:
     - name: meta.for.iterators.setlx
       begin: (\()
       patterns:
-      - name: keyword.operator.setlx
-        match: (\|)
+      - include: '$self'
       end: (\)\s*\{)
     - include: '$self'
     end: (\})
   while:
     name: meta.while.setlx
-    begin: (while)
+    begin: \b(while)\b
     beginCaptures:
       '1': {name: keyword.control.setlx}
     patterns:
@@ -129,7 +128,7 @@ repository:
     end: (\})
   do-while:
     name: meta.doWhile.setlx
-    begin: (do)(\s*)(\{)
+    begin: \b(do)\b(\s*)(\{)
     beginCaptures:
       '1': {name: keyword.control.setlx}
     patterns:
@@ -150,7 +149,7 @@ repository:
     - include: '#check-backtrack'
   throw: 
     name: keyword.control.setlx
-    match: (throw)
+    match: \b(throw)\b
   try-catch:
     patterns:
     - include: '#try'
@@ -165,7 +164,7 @@ repository:
     end: (\})
   catch:
     name: meta.catch.setlx
-    begin: ((catchLng)|(catchUsr)|(catch))
+    begin: \b((catchLng)|(catchUsr)|(catch))\b
     beginCaptures:
       '1': {name: keyword.control.setlx}
     patterns:
@@ -187,7 +186,7 @@ repository:
       '1': {name: keyword.control.setlx}
     patterns:
     - name: meta.check.backtrackcall.setlx keyword.control.setlx
-      match: (backtrack)
+      match: \b(backtrack)\b
     - include: '$self'
     end: (\})
   afterbacktrack:
@@ -210,7 +209,7 @@ repository:
       '1': {name: keyword.control.setlx}
     patterns:
     - name: meta.match.case.setlx
-      begin: (case)
+      begin: \b(case)\b
       beginCaptures:
         '1': {name: keyword.control.setlx}
       patterns:
@@ -227,7 +226,7 @@ repository:
     end: (\})
   scan:
     name: meta.scan.setlx
-    begin: (scan)
+    begin: \b(scan)\b
     beginCaptures:
       '1': {name: keyword.control.setlx}
     patterns:
@@ -247,7 +246,7 @@ repository:
     name: meta.regexBranch.setlx
     patterns:
     - name: keyword.control.setlx
-      match: (regex)
+      match: \b(regex)\b
     - name: string.regexp.setlx
       begin: (\')
       beginCaptures:
@@ -256,7 +255,7 @@ repository:
       endCaptures:
         '1': {name: string.regexp.setlx}
     - name: keyword.control.setlx
-      match: (as)
+      match: \b(as)\b
     - name: keyword.control.setlx
       match: (\|)
     - name: keyword.control.setlx
@@ -280,7 +279,7 @@ repository:
       match: (\|\=\>)
   procedure:
     name: meta.procedure.setlx
-    begin: (procedure)
+    begin: \b(procedure)\b
     beginCaptures:
       '1': {name: storage.type.procedure.setlx}
     patterns:
@@ -289,7 +288,7 @@ repository:
     end: (\})
   cached-procedure:
     name: meta.cachedProcedure.setlx
-    begin: (cachedProcedure)
+    begin: \b(cachedProcedure)\b
     beginCaptures:
       '1': {name: storage.type.cachedProcedure.setlx}
     patterns:
@@ -298,7 +297,7 @@ repository:
     end: (\})
   closure:
     name: meta.closure.setlx
-    begin: (closure)
+    begin: \b(closure)\b
     beginCaptures:
       '1': {name: storage.type.closure.setlx}
     patterns:
@@ -341,28 +340,32 @@ repository:
       '1': {name: entity.enclosing.set.setlx}
     patterns:
     - include: '#general-collection'
+    - include: '$self'
     end: (\})
     endCaptures:
       '1': {name: entity.enclosing.set.setlx}
   list-access:
-    name: meta.list.access.setlx
-    begin: ((\w|\]))(\[)
+    begin: ([a-zA-Z0-9\_\]]+)(\[)
+    beginCaptures:
+      '2': {name: meta.list.access.setlx}
     patterns:
     - include: '$self'
     end: (\])
+    endCaptures:
+      '1': {name: meta.list.access.setlx}
   list:
     begin: (\[)
     beginCaptures:
       '1': {name: entity.enclosing.list.setlx}
     patterns:
     - include: '#general-collection'
+    - include: '$self'
     end: (\])
     endCaptures:
       '1': {name: entity.enclosing.list.setlx}
   general-collection:
     name: meta.collection.setlx
     patterns:
-    - include: '$self'
     - name: meta.collection.ranges.setlx
       patterns:
       - name: keyword.operator.setlx
@@ -374,29 +377,16 @@ repository:
 
   lin-alg:
     patterns:
-      - include: '#setl-matrix'
-      - include: '#setl-vector'
-  setl-matrix:
-    name: meta.matrix.setlx
+      - include: '#setl-matrix-vector'
+  setl-matrix-vector:
     begin: (<<)
     beginCaptures:
-      '1':  {name: entity.enclosing.matrix.setlx}
+      '1':  {name: entity.enclosing.matrix-vector.setlx}
     patterns:
     - include: '$self'
-    - include: 'meta.matrix.setlx'
     end: (\>\>)
     endCaptures:
-      '1':  {name: entity.enclosing.matrix.setlx}
-  setl-vector:
-    name: meta.vector.setlx
-    begin: (<<)
-    beginCaptures:
-      '1':  {name: entity.enclosing.vector.setlx}
-    patterns:
-    - include: '#atomic-number'
-    end: (\>\>)
-    endCaptures:
-      '1':  {name: entity.enclosing.vector.setlx}
+      '1':  {name: entity.enclosing.matrix-vector.setlx}
 
   keywords:
     comment: combination of all "keyowrds" available
@@ -449,9 +439,9 @@ repository:
     - name: keyword.operator.comparison.setlx
       match: (\>)
     - name: keyword.operator.comparison.setlx
-      match: (notin)
+      match: \b(notin)\b
     - name: keyword.operator.comparison.setlx
-      match: (in)
+      match: \b(in)\b
   product-operators:
     patterns:
     - name: keyword.operator.product.setlx
@@ -480,10 +470,10 @@ repository:
       match: (\+)
   exists:
     name: keyword.operator.setlx
-    match: (exists)
+    match: \b(exists)\b
   forall:
     name: keyword.operator.setlx
-    match: (forall)
+    match: \b(forall)\b
   negator:
     name: keyword.operator.setlx
     match: (\!)
@@ -512,15 +502,15 @@ repository:
   atomic-om:
     comment: atomic value, om   # undefined
     name: constant.language.setlx
-    match: (om)
+    match: \b(om)\b
   atomic-true:
     comment: atomic value, true
     name: constant.language.setlx
-    match: (true)
+    match: \b(true)\b
   atomic-false:
     comment: atomic value, false
     name: constant.language.setlx
-    match: (false)
+    match: \b(false)\b
   atomic-functionSymbol:
     comment: combination of all three ways to defina a functionSymbol for a term
     patterns:
