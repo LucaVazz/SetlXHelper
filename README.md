@@ -9,7 +9,7 @@ I'm fairly sure you are convinced now ;)
 Additionally, this extension is available for SublimeText 2/3 (see [here](https://packagecontrol.io/packages/SetlX%20Helper)) and VisualStudio Code (see [here](https://marketplace.visualstudio.com/items?itemName=LucaVazz.setlx)).
 
 
-**Current Version**: v1.2.0, compatible with SetlX v2.5.0
+**Current Version**: v1.2.0, compatible with SetlX v2.5.0-v2.6.1
 
 
 
@@ -20,25 +20,62 @@ Additionally, this extension is available for SublimeText 2/3 (see [here](https:
 3. After the installation is done (the progress is shown in the lower left corner) you are all set. Just open a SetlX-program file and enjoy the new help!
 4. ***optional:*** *I recommend using the* Monokai Extended *Color Scheme (available via PackageControl) for a nice and colorful syntax-highlighting.*
 
+Updates are applied automatically.
+
 
 #### VisualStudio Code   <img src="images/vsc.png" alt="[VSC]" height="17">
 1. Open the Command Palette (by pressing <kbd>Ctrl</kbd>+<kbd>P</kbd>), type in `ext install setlx` and press <kbd>Enter</kbd>
-2. After the installation is done, restart VS Code when the prompt asking you to do it appears. Then you are all set. Just open a SetlX-program file and enjoy the new help!
+2. After the installation is done, restart VS Code when the prompt asking you to do so appears. Then you are all set. Just open a SetlX-program file and enjoy the new help!
 3. ***optional:*** *I recommend using the* Monokai *Color Theme for a nice and colorful syntax-highlighting.*
+
+Updates are applied automatically.
+
+
+#### TextMate   <img src="images/tm.png" alt="[TM]" height="17">
+1. Close TextMate if it is currently running.
+2. Open a console and go to TextMate's Bundles Directory: `cd /Library/Application\ Support/TextMate/Bundles`
+    - If it does not exist, create it: `mkdir -p /Library/Application\ Support/TextMate/Bundles`
+3. Clone the `textmate` branch as a Bundle: `git clone -b textmate -- https://github.com/LucaVazz/SetlXHelper.git SetlXHelper.tmbundle`
+4. After the command is finished, you are all set. Just start TextMate again and open a SetlX-program file and enjoy the new help!
+
+Updates need to be done manually. To update:
+1. Go inside the Bundle: `cd /Library/Application\ Support/TextMate/Bundles/SetlXHelper.tmbundle`
+2. Update it with the new changes: `git pull`
+
+
+#### IntelliJ IDEA   <img src="images/intellij.png" alt="[IntelliJ]" height="17">
+1. Verify that the `TextMate bundles support` Plugin is installed and enabled:
+    1. Open the settings (*File* ➜ *Settings* for Windows and Linux or *IntelliJ IDEA* ➜ *Preferences* for macOS) and then go to *Plugins*.
+    2. Search for `textmate`
+    3. If the plugin apears, make sure its checkbox has a tick in it.
+    4. If not, click on the `Search in repositories` link, select the `TextMate bundles support` entry and click on the `Install` button on the left, followed by a click on the `Restart IntelliJ IDEA` button.
+2. Add the TextMate Bundle:
+    1. Open a console, change into a direcotry of your choice and clone the `textmate` branch as a Bundle: `git clone -b textmate -- https://github.com/LucaVazz/SetlXHelper.git SetlXHelper.tmbundle`
+    2. Open IntelliJ's settings (see above) and navigate to *Editor* ➜ *TextMate Bundles* on the right.
+    3. Click on the *+* in the upper left corner and select the `SetlXHelper.tmbundle` directory you just cloned.
+    4. In the lower left corner, select the Color Scheme you want to use for `SetlX` files.
+    5. Close the dialog by clicking *Apply* and then *OK*.
+3. Now you are all set. Just open a SetlX-program file and enjoy the new help!
+
+Updates need to be done manually. To update:
+1. Go inside the directory you chosed and change into the `SetlXHelper.tmbundle` directory.
+2. Update it with the new changes: `git pull`
 
 
 
 ## Using the Features
 *The icons in brackets indicate for which editor the feature is implemented.*
 
-#### Syntax Highligting   <sup>(<img src="images/st.png" alt="[ST]" height="10"> <img src="images/vsc.png" alt="[VSC]" height="10">)</sup>
+#### Syntax Highligting   <sup>(<img src="images/st.png" alt="[ST]" height="10"> <img src="images/vsc.png" alt="[VSC]" height="10"> <img src="images/tm.png" alt="[TM]" height="17"> <img src="images/intellij.png" alt="[IntelliJ]" height="17">)</sup>
 <img src="images/readme_syntax.PNG" alt="[Illustration of the Syntax Definitions]" width="420" align="right">
 
 Just type code ;)
 
 *Keep in mind:* The colors don't come from the Helper-Plugin. You can choose them as you like by selecting a Theme which suits you: 
-* <img src="images/st.png" alt="[ST]" height="17"> : *Preferences* ➜ *Color Scxheme*
+* <img src="images/st.png" alt="[ST]" height="17"> : *Preferences* ➜ *Color Scxheme...*
 * <img src="images/vsc.png" alt="[VSC]" height="17"> : *File* ➜ *Settings* ➜ *Color Theme*
+* <img src="images/tm.png" alt="[TM]" height="17"> : *Preferences* ➜ *Fonts & Colors*
+* <img src="images/intellij.png" alt="[IntelliJ]" height="17"> : See installations instructions above, step 2.4
 
 
 #### Type Common Structures Faster With Snippets   <sup>(<img src="images/st.png" alt="[ST]" height="10"> <img src="images/vsc.png" alt="[VSC]" height="10">)</sup>
@@ -67,9 +104,7 @@ If you just press <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>B</kbd> or just select `Se
 ## Contributing
 Feel free to suggest *additional features* or to *report bugs* by using the [GitHub-Issues](https://github.com/LucaVazz/SetlXHelper/issues).
 
-I'm also always pleased to see *pull-request*, for example if you have ported the extension to other editors or added a cool new functionality.
-
-If you see an issue in the backlog which isn't assigned to anyone yet, it's is up for grabs for ***you***! Just drop a comment and start working on it.
+I'm also always pleased to see *pull-request*, for example if you have ported the extension to other editors or added new functionality.
 
 
 
@@ -80,4 +115,4 @@ This project is licensed under the terms of the *GNU General Public License v3.0
 
 ## A Note on Used Material
 * The syntax highlighting is (obviously) based on the [SetlX Grammar](https://github.com/herrmanntom/setlX/blob/master/interpreter/core/src/main/antlr/SetlXgrammar.g).
-* The icons in this readme are taken from the [TypeScript Homepage](https://www.typescriptlang.org/index.html#download-links).
+* The icons in this readme are taken from the [TypeScript homepage](https://www.typescriptlang.org/index.html#download-links), the [TextMate Wiki AlternativeIcons page](http://macromates.com/textmate/other/TextMate300.psd.gz) and the [JetBrains Press & Logos page](https://www.jetbrains.com/company/press).
