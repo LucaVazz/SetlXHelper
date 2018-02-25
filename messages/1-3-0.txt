@@ -1,0 +1,8 @@
+FIXED:
+- fixed keyword highlighting
+    previously keywords inside variable names were also wrongly highlighted
+    (i.e. `in` inside `insert`)
+
+NEW FEATURES:
+- now also compatible with TextMate and IntelliJ IDEA (as a `.tmbundle`)
+    see https://github.com/LucaVazz/SetlXHelper/blob/1.3.0/README.md for instructions
