@@ -1580,7 +1580,7 @@
 		<key>switch</key>
 		<dict>
 			<key>begin</key>
-			<string>\b(switch)\b(\s*\{)</string>
+			<string>\b(switch)(\s*\{)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1597,7 +1597,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>\b(case)\b</string>
+					<string>\b(case)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1608,6 +1608,14 @@
 					</dict>
 					<key>end</key>
 					<string>(\:)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.setlx</string>
+						</dict>
+					</dict>
 					<key>name</key>
 					<string>meta.switch.case.setlx</string>
 					<key>patterns</key>
@@ -1620,7 +1628,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(default\s*\:)\b</string>
+					<string>\b(default\s*\:)</string>
 					<key>name</key>
 					<string>keyword.control.setlx</string>
 				</dict>
