@@ -77,19 +77,21 @@ repository:
     end: (\})
   switch:
     name: meta.switch.setlx
-    begin: \b(switch)\b(\s*\{)
+    begin: \b(switch)(\s*\{)
     beginCaptures:
       '1': {name: keyword.control.setlx}
     patterns:
     - name: meta.switch.case.setlx
-      begin: \b(case)\b
+      begin: \b(case)
       beginCaptures:
         '1': {name: keyword.control.setlx}
       patterns:
       - include: '$self'
       end: (\:)
+      endCaptures:
+        '1': {name: keyword.control.setlx}
     - name: keyword.control.setlx
-      match: \b(default\s*\:)\b
+      match: \b(default\s*\:)
     - include: '$self'
     end: (\})
 
